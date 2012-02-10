@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_attribute_value</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../attributes.html#header.boost.log.attributes.basic_attribute_value_hpp" title="Header &lt;boost/log/attributes/basic_attribute_value.hpp&gt;">
+<link rel="prev" href="../swap_id272825.html" title="Function template swap">
+<link rel="next" href="basic_clock.html" title="Class template basic_clock">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../swap_id272825.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.basic_attribute_value_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_clock.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.attributes.basic_attribute_value"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_attribute_value</span></h2>
+<p>boost::log::attributes::basic_attribute_value &#8212; Basic attribute value class. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../attributes.html#header.boost.log.attributes.basic_attribute_value_hpp" title="Header &lt;boost/log/attributes/basic_attribute_value.hpp&gt;">boost/log/attributes/basic_attribute_value.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_attribute_value.html" title="Class template basic_attribute_value">basic_attribute_value</a> : <span class="bold"><strong>public</strong></span> attribute_value {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> T <a name="boost.log.attributes.basic_attribute_value.held_type"></a>held_type;  <span class="emphasis"><em>// Value type. </em></span>
+
+  <span class="emphasis"><em>// <a href="basic_attribute_value.html#boost.log.attributes.basic_attribute_valueconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_attribute_value.html#id272986-bb">basic_attribute_value</a>(held_type <span class="bold"><strong>const</strong></span> &amp;);
+
+  <span class="emphasis"><em>// <a href="basic_attribute_value.html#id272912-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_attribute_value.html#id272915-bb">dispatch</a>(type_dispatcher &amp;) ;
+  <span class="type">shared_ptr&lt; <a href="../attribute_value.html" title="Struct attribute_value">attribute_value</a> &gt;</span> <a href="basic_attribute_value.html#id272946-bb">detach_from_thread</a>() ;
+  <span class="type">held_type <span class="bold"><strong>const</strong></span> &amp;</span> <a href="basic_attribute_value.html#id272971-bb">get</a>() <span class="bold"><strong>const</strong></span>;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id454448"></a><h2>Description</h2>
+<p>This class can be used as a boilerplate for simple attribute values. The class implements all needed interfaces of attribute values and allows to store a single value of the type specified as a template parameter. The stored value can be dispatched with type dispatching mechanism. </p>
+<div class="refsect2" lang="en">
+<a name="id454456"></a><h3>
+<a name="boost.log.attributes.basic_attribute_valueconstruct-copy-destruct"></a><code class="computeroutput">basic_attribute_value</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><a name="id272986-bb"></a>basic_attribute_value(held_type <span class="bold"><strong>const</strong></span> &amp; v);</pre>
+<p>Constructor with initialization of the stored value </p>
+</li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id454498"></a><h3>
+<a name="id272912-bb"></a><code class="computeroutput">basic_attribute_value</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id272915-bb"></a>dispatch(type_dispatcher &amp; dispatcher) ;</pre>
+<p>The method dispatches the value to the given object.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">dispatcher</code></span></td>
+<td><p>The object that attempts to dispatch the stored value. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>true if <span class="emphasis"><em>dispatcher</em></span> was capable to consume the real attribute value type and false otherwise. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">shared_ptr&lt; <a href="../attribute_value.html" title="Struct attribute_value">attribute_value</a> &gt;</span> <a name="id272946-bb"></a>detach_from_thread() ;</pre>
+<p>The method is called when the attribute value is passed to another thread (e.g. in case of asynchronous logging). The value should ensure it properly owns all thread-specific data.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>An actual pointer to the attribute value. It may either point to this object or another. In the latter case the returned pointer replaces the pointer used by caller to invoke this method and is considered to be a functional equivalent to the previous pointer. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">held_type <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id272971-bb"></a>get() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Reference to the contained value. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../swap_id272825.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.basic_attribute_value_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_clock.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

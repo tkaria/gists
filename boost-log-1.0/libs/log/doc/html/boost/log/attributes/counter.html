@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template counter</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../attributes.html#header.boost.log.attributes.counter_hpp" title="Header &lt;boost/log/attributes/counter.hpp&gt;">
+<link rel="prev" href="constant.html" title="Class template constant">
+<link rel="next" href="current_process_id.html" title="Class current_process_id">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="constant.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.counter_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="current_process_id.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.attributes.counter"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template counter</span></h2>
+<p>boost::log::attributes::counter &#8212; A class of an attribute that counts an integral value. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../attributes.html#header.boost.log.attributes.counter_hpp" title="Header &lt;boost/log/attributes/counter.hpp&gt;">boost/log/attributes/counter.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; 
+<span class="bold"><strong>class</strong></span> <a href="counter.html" title="Class template counter">counter</a> : <span class="bold"><strong>public</strong></span> attribute {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> T <a name="boost.log.attributes.counter.held_type"></a>held_type;  <span class="emphasis"><em>// A held counter type. </em></span>
+
+  <span class="emphasis"><em>// <a href="counter.html#boost.log.attributes.counterconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="counter.html#id273309-bb">counter</a>(held_type <span class="bold"><strong>const</strong></span> &amp; = held_type(), <span class="bold"><strong>long</strong></span> = 1);
+
+  <span class="emphasis"><em>// <a href="counter.html#id273286-bb">public member functions</a></em></span>
+  <span class="type">shared_ptr&lt; <a href="../attribute_value.html" title="Struct attribute_value">attribute_value</a> &gt;</span> <a href="counter.html#id273290-bb">get_value</a>() ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id455614"></a><h2>Description</h2>
+<p>This type of attribute acts as a counter, that is, it returns a monotonously changing value each time requested. The attribute value type can be specified as a template parameter. However, the type must support basic arithmetic operations, such as addition and substraction. </p>
+<div class="refsect2" lang="en">
+<a name="id455622"></a><h3>
+<a name="boost.log.attributes.counterconstruct-copy-destruct"></a><code class="computeroutput">counter</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><a name="id273309-bb"></a>counter(held_type <span class="bold"><strong>const</strong></span> &amp; initial = held_type(), <span class="bold"><strong>long</strong></span> step = 1);</pre>
+<p>Constructor</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">initial</code></span></td>
+<td><p>Initial value of the counter </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">step</code></span></td>
+<td><p>Changing step of the counter. Each value acquired from the attribute will be greater than the previous one to this amount. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id455706"></a><h3>
+<a name="id273286-bb"></a><code class="computeroutput">counter</code> public member functions</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><span class="type">shared_ptr&lt; <a href="../attribute_value.html" title="Struct attribute_value">attribute_value</a> &gt;</span> <a name="id273290-bb"></a>get_value() ;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The actual attribute value. It shall not return NULL (exceptions shall be used to indicate errors). </p></td>
+</tr></tbody>
+</table></div>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="constant.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.counter_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="current_process_id.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

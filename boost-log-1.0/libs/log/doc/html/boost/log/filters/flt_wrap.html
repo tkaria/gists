@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template flt_wrap</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../filters.html#header.boost.log.filters.basic_filters_hpp" title="Header &lt;boost/log/filters/basic_filters.hpp&gt;">
+<link rel="prev" href="basic_filter.html" title="Struct template basic_filter">
+<link rel="next" href="flt_negation.html" title="Class template flt_negation">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_filter.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../filters.html#header.boost.log.filters.basic_filters_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="flt_negation.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.filters.flt_wrap"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template flt_wrap</span></h2>
+<p>boost::log::filters::flt_wrap &#8212; Filter wrapper. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../filters.html#header.boost.log.filters.basic_filters_hpp" title="Header &lt;boost/log/filters/basic_filters.hpp&gt;">boost/log/filters/basic_filters.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> T&gt; 
+<span class="bold"><strong>class</strong></span> <a href="flt_wrap.html" title="Class template flt_wrap">flt_wrap</a> : <span class="bold"><strong>public</strong></span> basic_filter&lt; CharT, flt_wrap&lt; CharT, T &gt; &gt; {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// <a href="flt_wrap.html#boost.log.filters.flt_wrapconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="flt_wrap.html#id270760-bb">flt_wrap</a>(T <span class="bold"><strong>const</strong></span> &amp;);
+
+  <span class="emphasis"><em>// <a href="flt_wrap.html#id270730-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="flt_wrap.html#id270734-bb"><span class="bold"><strong>operator</strong></span>()</a>(values_view_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id462787"></a><h2>Description</h2>
+<p>This simple wrapper is intended to provide necessary facade of a filter to a third-party functional object that implements the filter. The wrapper enables the filter to take part in lambda expressions of filters. </p>
+<div class="refsect2" lang="en">
+<a name="id462795"></a><h3>
+<a name="boost.log.filters.flt_wrapconstruct-copy-destruct"></a><code class="computeroutput">flt_wrap</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><a name="id270760-bb"></a>flt_wrap(T <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Constructor. Creates a wrapper with the aggregated functional object. </p>
+</li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id462837"></a><h3>
+<a name="id270730-bb"></a><code class="computeroutput">flt_wrap</code> public member functions</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id270734-bb"></a><span class="bold"><strong>operator</strong></span>()(values_view_type <span class="bold"><strong>const</strong></span> &amp; values) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Passes the call to the aggregated functional object</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">values</code></span></td>
+<td><p>A set of attribute values of a single log record </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The result of the aggregated functional object </p></td>
+</tr>
+</tbody>
+</table></div>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_filter.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../filters.html#header.boost.log.filters.basic_filters_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="flt_negation.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

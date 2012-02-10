@@ -1,0 +1,56 @@
+---
+# List of custom programs to install that are not packaged. These each require 
+# a install_name function in the appropriate place in the 'custom' directory to
+# define the steps for downloading, building, and installing the package.
+bio_general:
+ - emboss
+bio_nextgen:
+  alignment:
+    - bwa
+    - bowtie
+    - gmap
+    - lastz
+    - mosaik
+    - perm
+  utilitites:
+    - bedtools
+    - fastqc
+    - fastx_toolkit
+    - sabre
+    - solexaqa
+  analysis:
+    - cufflinks
+    - freebayes
+    - gatk
+    - picard
+    - shrec
+    - snpeff
+    - tophat
+  assembly:
+    - abyss
+    - transabyss
+    - trinity
+    - velvet
+  chip:
+    - macs
+  needs_64bit:
+    - ucsc_tools
+    - bfast
+    - novoalign
+cloudman:
+  - nginx
+  - proftpd
+  - sge
+distributed:
+  - mahout
+  - pydoop
+python:
+  - bx-python
+  - matplotlib
+  - rpy
+java:
+  - leinengin
+  #- cljr
+# ToDo -- test on 64bit with bfast
+#- dnaa
+#- srma

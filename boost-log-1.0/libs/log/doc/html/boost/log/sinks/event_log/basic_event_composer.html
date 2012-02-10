@@ -1,0 +1,208 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_event_composer</title>
+<link rel="stylesheet" href="../../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../../sinks.html#header.boost.log.sinks.event_log_backend_hpp" title="Header &lt;boost/log/sinks/event_log_backend.hpp&gt;">
+<link rel="prev" href="basic_custom_event_cate_id288653.html" title="Class template basic_custom_event_category_mapping">
+<link rel="next" href="../basic_simple_event_log__id287750.html" title="Class template basic_simple_event_log_backend">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_custom_event_cate_id288653.html"><img src="../../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../sinks.html#header.boost.log.sinks.event_log_backend_hpp"><img src="../../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../basic_simple_event_log__id287750.html"><img src="../../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.sinks.event_log.basic_event_composer"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_event_composer</span></h2>
+<p>boost::log::sinks::event_log::basic_event_composer &#8212; An event composer. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../../sinks.html#header.boost.log.sinks.event_log_backend_hpp" title="Header &lt;boost/log/sinks/event_log_backend.hpp&gt;">boost/log/sinks/event_log_backend.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_event_composer.html" title="Class template basic_event_composer">basic_event_composer</a> {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> CharT                                                                           <a name="boost.log.sinks.event_log.basic_event_composer.char_type"></a>char_type;             <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::basic_string&lt; char_type &gt;                                                  <a name="boost.log.sinks.event_log.basic_event_composer.string_type"></a>string_type;           <span class="emphasis"><em>// String type to be used as a message text holder. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::basic_ostream&lt; char_type &gt;                                                 <a name="boost.log.sinks.event_log.basic_event_composer.stream_type"></a>stream_type;           <span class="emphasis"><em>// Output stream type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> basic_attribute_values_view&lt; char_type &gt;                                        <a name="boost.log.sinks.event_log.basic_event_composer.values_view_type"></a>values_view_type;      <span class="emphasis"><em>// Attribute values view type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> function1&lt; event_id_t, values_view_type <span class="bold"><strong>const</strong></span> &amp; &gt;                               <a name="boost.log.sinks.event_log.basic_event_composer.event_id_mapper_type"></a>event_id_mapper_type;  <span class="emphasis"><em>// Event identifier mapper type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> function3&lt; <span class="bold"><strong>void</strong></span>, stream_type &amp;, values_view_type <span class="bold"><strong>const</strong></span> &amp;, string_type <span class="bold"><strong>const</strong></span> &amp; &gt; <a name="boost.log.sinks.event_log.basic_event_composer.formatter_type"></a>formatter_type;        <span class="emphasis"><em>// Type of an insertion composer (a formatter). </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::vector&lt; string_type &gt;                                                      <a name="boost.log.sinks.event_log.basic_event_composer.insertion_list"></a>insertion_list;        <span class="emphasis"><em>// Type of the composed insertions list. </em></span>
+
+  <span class="emphasis"><em>// <a href="basic_event_composer.html#boost.log.sinks.event_log.basic_event_composerconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_event_composer.html#id288961-bb">basic_event_composer</a>(event_id_mapper_type <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_event_composer.html#id288979-bb">basic_event_composer</a>(<a href="basic_event_composer.html" title="Class template basic_event_composer">basic_event_composer</a> <span class="bold"><strong>const</strong></span> &amp;);
+  basic_event_composer&amp; <a href="basic_event_composer.html#id288996-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="basic_event_composer.html" title="Class template basic_event_composer">basic_event_composer</a>);
+  <a href="basic_event_composer.html#id288992-bb">~basic_event_composer</a>();
+
+  <span class="emphasis"><em>// <a href="basic_event_composer.html#id288827-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_event_composer.html#id288830-bb">swap</a>(<a href="basic_event_composer.html" title="Class template basic_event_composer">basic_event_composer</a> &amp;) ;
+  <span class="type">event_map_reference</span> <a href="basic_event_composer.html#id288857-bb"><span class="bold"><strong>operator</strong></span>[]</a>(event_id_t) ;
+  <span class="type">event_map_reference</span> <a href="basic_event_composer.html#id288882-bb"><span class="bold"><strong>operator</strong></span>[]</a>(event_id_t::integer_type) ;
+  <span class="type">event_id_t</span> <a href="basic_event_composer.html#id288906-bb"><span class="bold"><strong>operator</strong></span>()</a>(values_view_type <span class="bold"><strong>const</strong></span> &amp;, string_type <span class="bold"><strong>const</strong></span> &amp;, 
+                        insertion_list &amp;) <span class="bold"><strong>const</strong></span>;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id500377"></a><h2>Description</h2>
+<p>This class is a function object that extracts event identifier from the attribute values set and formats insertion strings for the particular event. Each insertion string is formatted with a distinct formatter, which can be created just like regular sinks formatters.</p>
+<p>Before using, the composer must be initialized with the following information: </p>
+<div class="itemizedlist"><ul type="disc">
+<li><p>Event identifier extraction logic. One can use <code class="computeroutput">basic_direct_event_id_mapping</code> or <code class="computeroutput">basic_custom_event_id_mapping</code> classes in order to create such extractor and pass it to the composer constructor. </p></li>
+<li><p>Event identifiers and insertion string formatters. The composer provides the following syntax to provide this information:</p></li>
+</ul></div>
+<p>
+</p>
+<pre class="programlisting">     event_composer comp;
+     comp[MY_EVENT_ID1] % formatter1 % ... % formatterN;
+     comp[MY_EVENT_ID2] % formatter1 % ... % formatterN;
+     ...
+</pre>
+<p>The event identifiers in square brackets are provided by the message compiler generated header (the actual names are specified in the .mc file). The formatters represent the insertion strings that will be used to replace placeholders in event messages, thus the number and the order of the formatters must correspond to the message definition. </p>
+<div class="refsect2" lang="en">
+<a name="id500426"></a><h3>
+<a name="boost.log.sinks.event_log.basic_event_composerconstruct-copy-destruct"></a><code class="computeroutput">basic_event_composer</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id288961-bb"></a>basic_event_composer(event_id_mapper_type <span class="bold"><strong>const</strong></span> &amp; id_mapper);</pre>
+<p>Default constructor. Creates an empty map of events.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">id_mapper</code></span></td>
+<td><p>An event identifier mapping function that will be used to extract event ID from attribute values </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id288979-bb"></a>basic_event_composer(<a href="basic_event_composer.html" title="Class template basic_event_composer">basic_event_composer</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor. Performs a deep copy of the object. </p>
+</li>
+<li>
+<pre class="literallayout">basic_event_composer&amp; <a name="id288996-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="basic_event_composer.html" title="Class template basic_event_composer">basic_event_composer</a> that);</pre>
+<p>Assignment. Provides strong exception guarantee. </p>
+</li>
+<li>
+<pre class="literallayout"><a name="id288992-bb"></a>~basic_event_composer();</pre>
+<p>Destructor </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id500570"></a><h3>
+<a name="id288827-bb"></a><code class="computeroutput">basic_event_composer</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id288830-bb"></a>swap(<a href="basic_event_composer.html" title="Class template basic_event_composer">basic_event_composer</a> &amp; that) ;</pre>
+<p>Swaps <code class="computeroutput">*this</code> and <code class="computeroutput">that</code> objects. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">event_map_reference</span> <a name="id288857-bb"></a><span class="bold"><strong>operator</strong></span>[](event_id_t id) ;</pre>
+<p>Initiates creation of a new event description. The result of the operator can be used to add formatters for insertion strings construction. The returned reference type is implementation detail.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">id</code></span></td>
+<td><p>Event identifier. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">event_map_reference</span> <a name="id288882-bb"></a><span class="bold"><strong>operator</strong></span>[](event_id_t::integer_type id) ;</pre>
+<p>Initiates creation of a new event description. The result of the operator can be used to add formatters for insertion strings construction. The returned reference type is implementation detail.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">id</code></span></td>
+<td><p>Event identifier. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">event_id_t</span> <a name="id288906-bb"></a><span class="bold"><strong>operator</strong></span>()(values_view_type <span class="bold"><strong>const</strong></span> &amp; attributes, 
+                      string_type <span class="bold"><strong>const</strong></span> &amp; message, 
+                      insertion_list &amp; insertions) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Event composition operator. Extracts an event identifier from the attribute values by calling event ID mapper. Then runs all formatters that were registered for the event with the extracted ID. The results of formatting are returned in the <code class="computeroutput">insertions</code> parameter.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">attributes</code></span></td>
+<td><p>A set of attribute values of a logging record </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">insertions</code></span></td>
+<td><p>A sequence of formatted insertion strings </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">message</code></span></td>
+<td><p>Log record message </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>An event identifier that was extracted from <code class="computeroutput">attributes</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_custom_event_cate_id288653.html"><img src="../../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../sinks.html#header.boost.log.sinks.event_log_backend_hpp"><img src="../../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../basic_simple_event_log__id287750.html"><img src="../../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

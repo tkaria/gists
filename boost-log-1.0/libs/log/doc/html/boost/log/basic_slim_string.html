@@ -1,0 +1,2173 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_slim_string</title>
+<link rel="stylesheet" href="../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../utilities.html#header.boost.log.utility.slim_string_hpp" title="Header &lt;boost/log/utility/slim_string.hpp&gt;">
+<link rel="prev" href="../../BOOST_LOG_SCOPED_THREAD_TAG.html" title="Macro BOOST_LOG_SCOPED_THREAD_TAG">
+<link rel="next" href="operator_id302273.html" title="Function template operator&lt;&lt;">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../BOOST_LOG_SCOPED_THREAD_TAG.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../utilities.html#header.boost.log.utility.slim_string_hpp"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="operator_id302273.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.basic_slim_string"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_slim_string</span></h2>
+<p>boost::log::basic_slim_string &#8212; A slim string class with shared data and read-only access. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../utilities.html#header.boost.log.utility.slim_string_hpp" title="Header &lt;boost/log/utility/slim_string.hpp&gt;">boost/log/utility/slim_string.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT = std::char_traits&lt; CharT &gt; &gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> : <span class="bold"><strong>private</strong></span> std::allocator&lt; <span class="bold"><strong>char</strong></span> &gt; {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> CharT                                       <a name="boost.log.basic_slim_string.char_type"></a>char_type;               <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> TraitsT                                     <a name="boost.log.basic_slim_string.traits_type"></a>traits_type;             <span class="emphasis"><em>// Character traits type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::allocator&lt; char_type &gt;                 <a name="boost.log.basic_slim_string.allocator_type"></a>allocator_type;          <span class="emphasis"><em>// Underlying allocator type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::basic_string&lt; char_type, traits_type &gt; <a name="boost.log.basic_slim_string.string_type"></a>string_type;             <span class="emphasis"><em>// Compatible string type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::value_type                  <a name="boost.log.basic_slim_string.value_type"></a>value_type;            
+  <span class="bold"><strong>typedef</strong></span> allocator_type::pointer                     <a name="boost.log.basic_slim_string.pointer"></a>pointer;               
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_pointer               <a name="boost.log.basic_slim_string.const_pointer"></a>const_pointer;         
+  <span class="bold"><strong>typedef</strong></span> allocator_type::reference                   <a name="boost.log.basic_slim_string.reference"></a>reference;             
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_reference             <a name="boost.log.basic_slim_string.const_reference"></a>const_reference;       
+  <span class="bold"><strong>typedef</strong></span> allocator_type::size_type                   <a name="boost.log.basic_slim_string.size_type"></a>size_type;             
+  <span class="bold"><strong>typedef</strong></span> allocator_type::difference_type             <a name="boost.log.basic_slim_string.difference_type"></a>difference_type;       
+  <span class="bold"><strong>typedef</strong></span> const_pointer                               <a name="boost.log.basic_slim_string.const_iterator"></a>const_iterator;        
+  <span class="bold"><strong>typedef</strong></span> std::reverse_iterator&lt; const_iterator &gt;     <a name="boost.log.basic_slim_string.const_reverse_iterator"></a>const_reverse_iterator;
+
+  <span class="bold"><strong>enum</strong></span> <a name="boost.log.basic_slim_string.@0"></a>@0 { npos =  ~0U };
+
+  <span class="emphasis"><em>// <a href="basic_slim_string.html#boost.log.basic_slim_stringconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_slim_string.html#id301975-bb">basic_slim_string</a>();
+  <a href="basic_slim_string.html#id301987-bb">basic_slim_string</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_slim_string.html#id302012-bb">basic_slim_string</a>(string_type <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_slim_string.html#id302034-bb">basic_slim_string</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, size_type, size_type = npos);
+  <a href="basic_slim_string.html#id302078-bb">basic_slim_string</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type, size_type = npos);
+  <a href="basic_slim_string.html#id302124-bb">basic_slim_string</a>(const_pointer);
+  <a href="basic_slim_string.html#id302147-bb">basic_slim_string</a>(const_pointer, size_type);
+  <a href="basic_slim_string.html#id302183-bb">basic_slim_string</a>(size_type, char_type);
+  basic_slim_string&amp; <a href="basic_slim_string.html#id302219-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; basic_slim_string&amp; <a href="basic_slim_string.html#id302244-bb"><span class="bold"><strong>operator</strong></span>=</a>(T <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_slim_string.html#id302214-bb">~basic_slim_string</a>();
+
+  <span class="emphasis"><em>// <a href="basic_slim_string.html#id299490-bb">public member functions</a></em></span>
+  <span class="type">const_reference</span> <a href="basic_slim_string.html#id299493-bb"><span class="bold"><strong>operator</strong></span>[]</a>(size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_slim_string.html#id299529-bb"><span class="bold"><strong>operator</strong></span>==</a>(T <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_slim_string.html#id299557-bb"><span class="bold"><strong>operator</strong></span>!=</a>(T <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_slim_string.html#id299585-bb"><span class="bold"><strong>operator</strong></span>&lt;</a>(T <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_slim_string.html#id299613-bb"><span class="bold"><strong>operator</strong></span>&gt;</a>(T <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_slim_string.html#id299641-bb"><span class="bold"><strong>operator</strong></span>&lt;=</a>(T <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_slim_string.html#id299669-bb"><span class="bold"><strong>operator</strong></span>&gt;=</a>(T <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reference</span> <a href="basic_slim_string.html#id299698-bb">at</a>(size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_pointer</span> <a href="basic_slim_string.html#id299738-bb">data</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_pointer</span> <a href="basic_slim_string.html#id299753-bb">c_str</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id299769-bb">size</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id299784-bb">length</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_slim_string.html#id299799-bb">empty</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id299820-bb">capacity</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id299837-bb">max_size</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_slim_string.html#id299855-bb">begin</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_slim_string.html#id299870-bb">end</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reverse_iterator</span> <a href="basic_slim_string.html#id299885-bb">rbegin</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reverse_iterator</span> <a href="basic_slim_string.html#id299900-bb">rend</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id299916-bb">copy</a>(pointer, size_type, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a></span> <a href="basic_slim_string.html#id299968-bb">substr</a>(size_type = 0, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_slim_string.html#id300011-bb">swap</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> &amp;) ;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300030-bb">find</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300075-bb">find</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300118-bb">find</a>(const_pointer, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300161-bb">find</a>(const_pointer, size_type, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300215-bb">find</a>(char_type, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300258-bb">rfind</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300303-bb">rfind</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300346-bb">rfind</a>(const_pointer, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300390-bb">rfind</a>(const_pointer, size_type, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300444-bb">rfind</a>(char_type, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300487-bb">find_first_of</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300532-bb">find_first_of</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300575-bb">find_first_of</a>(const_pointer, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300619-bb">find_first_of</a>(const_pointer, size_type, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300673-bb">find_first_of</a>(char_type, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300716-bb">find_last_of</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300761-bb">find_last_of</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300804-bb">find_last_of</a>(const_pointer, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300848-bb">find_last_of</a>(const_pointer, size_type, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300903-bb">find_last_of</a>(char_type, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300946-bb">find_first_not_of</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id300991-bb">find_first_not_of</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301035-bb">find_first_not_of</a>(const_pointer, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301079-bb">find_first_not_of</a>(const_pointer, size_type, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301133-bb">find_first_not_of</a>(char_type, size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301176-bb">find_last_not_of</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301222-bb">find_last_not_of</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301266-bb">find_last_not_of</a>(const_pointer, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301310-bb">find_last_not_of</a>(const_pointer, size_type, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_slim_string.html#id301365-bb">find_last_not_of</a>(char_type, size_type = npos) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301409-bb">compare</a>(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301439-bb">compare</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301467-bb">compare</a>(size_type, size_type, <a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301533-bb">compare</a>(size_type, size_type, string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301596-bb">compare</a>(size_type, size_type, <a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp;, size_type, 
+              size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301681-bb">compare</a>(size_type, size_type, string_type <span class="bold"><strong>const</strong></span> &amp;, size_type, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301764-bb">compare</a>(const_pointer) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301793-bb">compare</a>(const_pointer, size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301834-bb">compare</a>(size_type, size_type, const_pointer) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>int</strong></span></span> <a href="basic_slim_string.html#id301898-bb">compare</a>(size_type, size_type, const_pointer, size_type) <span class="bold"><strong>const</strong></span>;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id528542"></a><h2>Description</h2>
+<p>The slim string class is used within the library to optimize attribute names storage and copying. The <code class="computeroutput">basic_slim_string</code> class template provides interface similar to <code class="computeroutput">std::basic_string</code> with regard to read-only capabilities. </p>
+<div class="refsect2" lang="en">
+<a name="id528562"></a><h3>
+<a name="boost.log.basic_slim_stringconstruct-copy-destruct"></a><code class="computeroutput">basic_slim_string</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id301975-bb"></a>basic_slim_string();</pre>
+<p>Default constructor</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">empty() == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id301987-bb"></a>basic_slim_string(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Source string to copy from </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == that</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id302012-bb"></a>basic_slim_string(string_type <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Constructs a slim string from an STL string.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Source string to copy from </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == that</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id302034-bb"></a>basic_slim_string(string_type <span class="bold"><strong>const</strong></span> &amp; s, size_type pos, size_type n = npos);</pre>
+<p>Constructs a slim string from an STL string part.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of symbols to copy </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Starting position to begin copying from </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Source string to copy from </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == that.substr(pos, n)</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id302078-bb"></a>basic_slim_string(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, size_type pos, 
+                  size_type n = npos);</pre>
+<p>Constructs a slim string from a slim string part.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of symbols to copy </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Starting position to begin copying from </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Source string to copy from </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == that.substr(pos, n)</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id302124-bb"></a>basic_slim_string(const_pointer s);</pre>
+<p>Constructs a slim string from a C-style string</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Source string. Must be a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == string_type(s)</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id302147-bb"></a>basic_slim_string(const_pointer s, size_type n);</pre>
+<p>Constructs a slim string from a C-style string</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters in sequence <span class="emphasis"><em>s</em></span> </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Source string. Must be a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == string_type(s, n)</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id302183-bb"></a>basic_slim_string(size_type n, char_type c);</pre>
+<p>Constructs a slim string from a number of characters</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">c</code></span></td>
+<td><p>Filler character </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == string_type(n, c)</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout">basic_slim_string&amp; <a name="id302219-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Assignment operator</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Source string to copy from </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == that</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; basic_slim_string&amp; <a name="id302244-bb"></a><span class="bold"><strong>operator</strong></span>=(T <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Assignment operator</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Source string to copy from </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">*this == basic_slim_string(that)</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id302214-bb"></a>~basic_slim_string();</pre>
+<p>Destructor </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id529266"></a><h3>
+<a name="id299490-bb"></a><code class="computeroutput">basic_slim_string</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id299493-bb"></a><span class="bold"><strong>operator</strong></span>[](size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Indexing operator</p>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Index of the character requested </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><span class="emphasis"><em>n</em></span> <code class="computeroutput">&lt; size()</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant reference to the requested character </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id299529-bb"></a><span class="bold"><strong>operator</strong></span>==(T <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographical comparison operator (equality). 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id299557-bb"></a><span class="bold"><strong>operator</strong></span>!=(T <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographical comparison operator (inequality). 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id299585-bb"></a><span class="bold"><strong>operator</strong></span>&lt;(T <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographical comparison operator (less). 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id299613-bb"></a><span class="bold"><strong>operator</strong></span>&gt;(T <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographical comparison operator (greater). 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id299641-bb"></a><span class="bold"><strong>operator</strong></span>&lt;=(T <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographical comparison operator (less or equal). 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id299669-bb"></a><span class="bold"><strong>operator</strong></span>&gt;=(T <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographical comparison operator (greater or equal). 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id299698-bb"></a>at(size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Checked accessor to a character within the string</p>
+<p>
+
+<span class="bold"><strong>Throws:</strong></span> An <code class="computeroutput">std::exception</code>-based exception to indicate that <span class="emphasis"><em>n</em></span> is out of range. </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Character index </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant reference to the requested character</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_pointer</span> <a name="id299738-bb"></a>data() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A constant pointer to the beginning of the string </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_pointer</span> <a name="id299753-bb"></a>c_str() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A constant pointer to the beginning of the string </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id299769-bb"></a>size() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The stored string length </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id299784-bb"></a>length() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The stored string length </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id299799-bb"></a>empty() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p><code class="computeroutput">true</code> if the stored string is empty, <code class="computeroutput">false</code> otherwise </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id299820-bb"></a>capacity() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p><code class="computeroutput">size()</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id299837-bb"></a>max_size() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p><code class="computeroutput">size()</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id299855-bb"></a>begin() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the beginning of the string </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id299870-bb"></a>end() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the end of the string </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reverse_iterator</span> <a name="id299885-bb"></a>rbegin() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant reverse iterator to the end of the string </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reverse_iterator</span> <a name="id299900-bb"></a>rend() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant reverse iterator to the beginning of the string </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id299916-bb"></a>copy(pointer s, size_type n, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Copies a part of the stored string into external buffer</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Maximum number of characters to copy </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Starting position in the string to begin copying from </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Pointer to the beginning of external buffer. Must not be NULL. The buffer must have enough capacity to accommodate up to <span class="emphasis"><em>n</em></span> characters. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of copied symbols </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a></span> <a name="id299968-bb"></a>substr(size_type pos = 0, size_type n = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Creates another slim string containing a part of the stored string</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Length of the substring </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Starting position of the substring </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The constructed substring </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id300011-bb"></a>swap(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> &amp; that) ;</pre>
+<p>Swaps two strings </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300030-bb"></a>find(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The sought substring </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300075-bb"></a>find(string_type <span class="bold"><strong>const</strong></span> &amp; s, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The sought substring </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300118-bb"></a>find(const_pointer s, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The sought substring. Must point to a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300161-bb"></a>find(const_pointer s, size_type pos, size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters in the substring <span class="emphasis"><em>s</em></span> </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The sought substring. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300215-bb"></a>find(char_type c, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a character</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">c</code></span></td>
+<td><p>The sought character </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300258-bb"></a>rfind(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The sought substring </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300303-bb"></a>rfind(string_type <span class="bold"><strong>const</strong></span> &amp; s, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The sought substring </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300346-bb"></a>rfind(const_pointer s, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The sought substring. Must point to a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300390-bb"></a>rfind(const_pointer s, size_type pos, size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a substring in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters in the substring <span class="emphasis"><em>s</em></span> </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The sought substring. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Starting position of the found substring within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300444-bb"></a>rfind(char_type c, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a character in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">c</code></span></td>
+<td><p>The sought character </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300487-bb"></a>find_first_of(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The set of characters being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300532-bb"></a>find_first_of(string_type <span class="bold"><strong>const</strong></span> &amp; s, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300575-bb"></a>find_first_of(const_pointer s, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters being sought. Must point to a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300619-bb"></a>find_first_of(const_pointer s, size_type pos, size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters in the sequence <span class="emphasis"><em>s</em></span> </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters being sought. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300673-bb"></a>find_first_of(char_type c, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a character</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">c</code></span></td>
+<td><p>The sought character </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300716-bb"></a>find_last_of(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The set of characters being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300761-bb"></a>find_last_of(string_type <span class="bold"><strong>const</strong></span> &amp; s, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300804-bb"></a>find_last_of(const_pointer s, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters being sought. Must point to a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300848-bb"></a>find_last_of(const_pointer s, size_type pos, size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the specified characters in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters in the sequence <span class="emphasis"><em>s</em></span> </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters being sought. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300903-bb"></a>find_last_of(char_type c, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for a character in the reverse direction in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">c</code></span></td>
+<td><p>The sought character </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300946-bb"></a>find_first_not_of(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The set of characters, that are not being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id300991-bb"></a>find_first_not_of(string_type <span class="bold"><strong>const</strong></span> &amp; s, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters, that are not being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301035-bb"></a>find_first_not_of(const_pointer s, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters, that are not being sought. Must point to a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301079-bb"></a>find_first_not_of(const_pointer s, size_type pos, size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters in the sequence <span class="emphasis"><em>s</em></span> </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters, that are not being sought. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301133-bb"></a>find_first_not_of(char_type c, size_type pos = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">c</code></span></td>
+<td><p>The character, that is not being sought </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301176-bb"></a>find_last_not_of(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, 
+                           size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence, in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The set of characters, that are not being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301222-bb"></a>find_last_not_of(string_type <span class="bold"><strong>const</strong></span> &amp; s, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence, in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters, that are not being sought </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301266-bb"></a>find_last_not_of(const_pointer s, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence, in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters, that are not being sought. Must point to a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301310-bb"></a>find_last_not_of(const_pointer s, size_type pos, size_type n) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified in the sequence, in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n</code></span></td>
+<td><p>Number of characters in the sequence <span class="emphasis"><em>s</em></span> </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>The set of characters, that are not being sought. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id301365-bb"></a>find_last_not_of(char_type c, size_type pos = npos) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Searches the string for one of the characters, other than specified, in the reverse direction</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">c</code></span></td>
+<td><p>The character, that is not being sought </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos</code></span></td>
+<td><p>Search starting position </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Position of the found character within the string, if lookup was successful, <code class="computeroutput">npos</code> otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301409-bb"></a>compare(<a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to this string</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301439-bb"></a>compare(string_type <span class="bold"><strong>const</strong></span> &amp; s) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to this string</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Comparand </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301467-bb"></a>compare(size_type pos1, size_type n1, <a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to a part of this string</p>
+<p>
+
+
+<span class="bold"><strong>Throws:</strong></span> An <code class="computeroutput">std::exception</code>-based exception if arguments are out of range. </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n1</code></span></td>
+<td><p>Length of the substring of this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos1</code></span></td>
+<td><p>Starting position within this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><code class="computeroutput">pos1 + n1 &lt; size()</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand.</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301533-bb"></a>compare(size_type pos1, size_type n1, string_type <span class="bold"><strong>const</strong></span> &amp; s) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to a part of this string</p>
+<p>
+
+
+<span class="bold"><strong>Throws:</strong></span> An <code class="computeroutput">std::exception</code>-based exception if arguments are out of range. </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n1</code></span></td>
+<td><p>Length of the substring of this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos1</code></span></td>
+<td><p>Starting position within this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Comparand </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><code class="computeroutput">pos1 + n1 &lt; size()</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand.</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301596-bb"></a>compare(size_type pos1, size_type n1, <a href="basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a> <span class="bold"><strong>const</strong></span> &amp; that, 
+            size_type pos2, size_type n2) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares substring of the argument string to a part of this string</p>
+<p>
+
+
+<span class="bold"><strong>Throws:</strong></span> An <code class="computeroutput">std::exception</code>-based exception if arguments are out of range. </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n1</code></span></td>
+<td><p>Length of the substring of this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">n2</code></span></td>
+<td><p>Length of the substring of the comparand to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos1</code></span></td>
+<td><p>Starting position within this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos2</code></span></td>
+<td><p>Starting position within the comparand to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Comparand full string </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><code class="computeroutput">pos1 + n1 &lt; size() &amp;&amp; pos2 + n2 &lt; that.size()</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand.</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301681-bb"></a>compare(size_type pos1, size_type n1, string_type <span class="bold"><strong>const</strong></span> &amp; s, 
+            size_type pos2, size_type n2) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares substring of the argument string to a part of this string</p>
+<p>
+
+
+<span class="bold"><strong>Throws:</strong></span> An <code class="computeroutput">std::exception</code>-based exception if arguments are out of range. </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n1</code></span></td>
+<td><p>Length of the substring of this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">n2</code></span></td>
+<td><p>Length of the substring of the comparand to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos1</code></span></td>
+<td><p>Starting position within this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos2</code></span></td>
+<td><p>Starting position within the comparand to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Comparand full string </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><code class="computeroutput">pos1 + n1 &lt; size() &amp;&amp; pos2 + n2 &lt; that.size()</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand.</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301764-bb"></a>compare(const_pointer s) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to this string</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Comparand. Must point to a zero-terminated sequence of characters, must not be NULL. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301793-bb"></a>compare(const_pointer s, size_type n2) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to this string</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n2</code></span></td>
+<td><p>Number of characters in the sequence <span class="emphasis"><em>s</em></span>. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Comparand. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301834-bb"></a>compare(size_type pos1, size_type n1, const_pointer s) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to a part of this string</p>
+<p>
+
+
+<span class="bold"><strong>Throws:</strong></span> An <code class="computeroutput">std::exception</code>-based exception if arguments are out of range. </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n1</code></span></td>
+<td><p>Length of the substring of this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos1</code></span></td>
+<td><p>Starting position within this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Comparand. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><code class="computeroutput">pos1 + n1 &lt; size()</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand.</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>int</strong></span></span> <a name="id301898-bb"></a>compare(size_type pos1, size_type n1, const_pointer s, size_type n2) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lexicographically compares the argument string to a part of this string</p>
+<p>
+
+
+<span class="bold"><strong>Throws:</strong></span> An <code class="computeroutput">std::exception</code>-based exception if arguments are out of range. </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">n1</code></span></td>
+<td><p>Length of the substring of this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">n2</code></span></td>
+<td><p>Number of characters in the sequence <span class="emphasis"><em>s</em></span>. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">pos1</code></span></td>
+<td><p>Starting position within this string to perform comparison to </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">s</code></span></td>
+<td><p>Comparand. Must point to a sequence of characters, must not be NULL. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><code class="computeroutput">pos1 + n1 &lt; size()</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Zero if the comparand equals this string, a negative value if this string is less than the comparand, a positive value if this string is greater than the comparand.</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../BOOST_LOG_SCOPED_THREAD_TAG.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../utilities.html#header.boost.log.utility.slim_string_hpp"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="operator_id302273.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

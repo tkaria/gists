@@ -1,0 +1,14 @@
+Requirements
+
+KTK - NOTE the requirement for just::thread - fuck that - not buying this - can change to boost but don't want to waste time now.
+
+Version 1.0 of g2log is released with this article. Building it requires just::thread's implementation of std::thread and CMake. On Linux, I have used gcc4.6, on Windows I have used Visual Studio 2010 Express.
+
+The next version of g2log is planned. So far no major code changes are planned, mostly build changes. Already, a reader has contacted me, he's using g2log with the std::thread implementation that comes with gcc 4.7. His preliminary testing says that it works. For the next version, I plan to modify the CMake setup and possibly the code so that it can support gcc 4.7.
+
+If you do not have gcc 4.7 and do not plan to buy just::thread's std::thread implementation and still want to use this logging utility, then you are still not in a rut. std::thread can easily be exchanged for whatever threading library (Qt, MFC, boost, pthread) that you use on your platform. The necessary code changes you need to address are then mostly in src/shared_queue.h and src/active.h/.cpp.
+
+The thread part of g2log is encapsuled within an active object. I have previously done  similar active objects with QThread, pthread and more. If you do not have access to std::thread then maybe these could help. The code is available at https://github.com/KjellKod/active-object.
+
+
+ 

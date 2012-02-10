@@ -1,0 +1,23 @@
+package capitalk;
+
+
+enum side_t {
+    BUY = 0;
+    SELL = 1;
+}
+
+enum quote_t {
+    INDICATIVE = 0;
+    TRADEABLE = 1;
+}
+
+message spot_fx_md_1 {
+    required string name = 1;
+    required int32 id = 2;
+    required side_t side = 3;
+    required double size = 4;
+    required double price = 5;
+    required double venue = 6;
+    optional quote_t quote_type = 7 [default = INDICATIVE];
+}
+

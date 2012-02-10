@@ -1,0 +1,495 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_attribute_values_view</title>
+<link rel="stylesheet" href="../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../attributes.html#header.boost.log.attributes.attribute_values_view_hpp" title="Header &lt;boost/log/attributes/attribute_values_view.hpp&gt;">
+<link rel="prev" href="swap_id272088.html" title="Function template swap">
+<link rel="next" href="swap_id272825.html" title="Function template swap">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="swap_id272088.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../attributes.html#header.boost.log.attributes.attribute_values_view_hpp"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="swap_id272825.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.basic_attribute_values__id272141"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_attribute_values_view</span></h2>
+<p>boost::log::basic_attribute_values_view &#8212; A view of attribute values. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../attributes.html#header.boost.log.attributes.attribute_values_view_hpp" title="Header &lt;boost/log/attributes/attribute_values_view.hpp&gt;">boost/log/attributes/attribute_values_view.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_attribute_values__id272141.html" title="Class template basic_attribute_values_view">basic_attribute_values_view</a> : <span class="bold"><strong>private</strong></span> std::allocator&lt; <span class="bold"><strong>char</strong></span> &gt; {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// <a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141types">types</a></em></span>
+  <span class="bold"><strong>typedef</strong></span> CharT                                    <a name="boost.log.basic_attribute_values__id272141.char_type"></a>char_type;           <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::basic_string&lt; char_type &gt;           <a name="boost.log.basic_attribute_values__id272141.string_type"></a>string_type;         <span class="emphasis"><em>// String type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> basic_slim_string&lt; char_type &gt;           <a name="boost.log.basic_attribute_values__id272141.key_type"></a>key_type;            <span class="emphasis"><em>// Key type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> shared_ptr&lt; <a href="attribute_value.html" title="Struct attribute_value">attribute_value</a> &gt;            <a name="boost.log.basic_attribute_values__id272141.mapped_type"></a>mapped_type;         <span class="emphasis"><em>// Mapped attribute type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> <a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a>&lt; char_type &gt;         <a name="boost.log.basic_attribute_values__id272141.attribute_set_type"></a>attribute_set_type;  <span class="emphasis"><em>// Corresponding attribute set type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::pair&lt; <span class="bold"><strong>const</strong></span> key_type, mapped_type &gt; <a name="boost.log.basic_attribute_values__id272141.value_type"></a>value_type;          <span class="emphasis"><em>// Value type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::allocator&lt; value_type &gt;             <a name="boost.log.basic_attribute_values__id272141.allocator_type"></a>allocator_type;      <span class="emphasis"><em>// Allocator type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::reference                <a name="boost.log.basic_attribute_values__id272141.reference"></a>reference;           <span class="emphasis"><em>// Reference type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_reference          <a name="boost.log.basic_attribute_values__id272141.const_reference"></a>const_reference;     <span class="emphasis"><em>// Const reference type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::pointer                  <a name="boost.log.basic_attribute_values__id272141.pointer"></a>pointer;             <span class="emphasis"><em>// Pointer type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_pointer            <a name="boost.log.basic_attribute_values__id272141.const_pointer"></a>const_pointer;       <span class="emphasis"><em>// Const pointer type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::size_type                <a name="boost.log.basic_attribute_values__id272141.size_type"></a>size_type;           <span class="emphasis"><em>// Size type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::difference_type          <a name="boost.log.basic_attribute_values__id272141.difference_type"></a>difference_type;     <span class="emphasis"><em>// Pointer difference type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> implementation_defined <a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141.const_iterator">const_iterator</a>;
+
+  <span class="emphasis"><em>// <a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141construct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_attribute_values__id272141.html#id272694-bb">basic_attribute_values_view</a>(<a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141.attribute_set_type">attribute_set_type</a> <span class="bold"><strong>const</strong></span> &amp;, 
+                              <a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141.attribute_set_type">attribute_set_type</a> <span class="bold"><strong>const</strong></span> &amp;, 
+                              <a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141.attribute_set_type">attribute_set_type</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_attribute_values__id272141.html#id272745-bb">basic_attribute_values_view</a>(<a href="basic_attribute_values__id272141.html" title="Class template basic_attribute_values_view">basic_attribute_values_view</a> <span class="bold"><strong>const</strong></span> &amp;);
+  basic_attribute_values_view&amp; <a href="basic_attribute_values__id272141.html#id272777-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="basic_attribute_values__id272141.html" title="Class template basic_attribute_values_view">basic_attribute_values_view</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_attribute_values__id272141.html#id272772-bb">~basic_attribute_values_view</a>();
+
+  <span class="emphasis"><em>// <a href="basic_attribute_values__id272141.html#id272314-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_values__id272141.html#id272317-bb">swap</a>(<a href="basic_attribute_values__id272141.html" title="Class template basic_attribute_values_view">basic_attribute_values_view</a> &amp;) ;
+  <span class="type">const_iterator</span> <a href="basic_attribute_values__id272141.html#id272344-bb">begin</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_attribute_values__id272141.html#id272359-bb">end</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_values__id272141.html#id272374-bb">size</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_attribute_values__id272141.html#id272390-bb">empty</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_attribute_values__id272141.html#id272405-bb">find</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_attribute_values__id272141.html#id272436-bb">find</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_attribute_values__id272141.html#id272467-bb">find</a>(<span class="bold"><strong>const</strong></span> char_type *) <span class="bold"><strong>const</strong></span>;
+  <span class="type">mapped_type</span> <a href="basic_attribute_values__id272141.html#id272498-bb"><span class="bold"><strong>operator</strong></span>[]</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">mapped_type</span> <a href="basic_attribute_values__id272141.html#id272529-bb"><span class="bold"><strong>operator</strong></span>[]</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">mapped_type</span> <a href="basic_attribute_values__id272141.html#id272560-bb"><span class="bold"><strong>operator</strong></span>[]</a>(<span class="bold"><strong>const</strong></span> char_type *) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_values__id272141.html#id272592-bb">count</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_values__id272141.html#id272620-bb">count</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_values__id272141.html#id272648-bb">count</a>(<span class="bold"><strong>const</strong></span> char_type *) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_values__id272141.html#id272677-bb">freeze</a>() ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id452895"></a><h2>Description</h2>
+<p>Attribute values view is a read-only associative container with attribute name as a key and a pointer to attribute value object as a mapped type. This is a collection of elements with unique keys, that is, there can be only one attribute value with a given name in a view. With respect to read-only capabilities, attribute values view is close to <code class="computeroutput">std::map</code>.</p>
+<p>An instance of attribute values view can be constructed from three attribute sets and attempts to accommodate values all attributes from the sets. The situation when a same-named attribute is found in more than one attribute is possible. This problem is solved on construction of the view: the three attribute sets have different priorities when it comes to solving conflicts.</p>
+<p>From the library perspective the three source attribute sets are global, thread-specific and source-specific attributes, with the latter having the highest priority. This feature allows to override attributes of wider scopes with the more specific ones.</p>
+<p>After the view construction it cannot be modified. However, for sake of performance, the attribute values are not immediately acquired on the view construction. Instead, on-demand acquision is performed either on iterator dereferencing or on call to the <code class="computeroutput">freeze</code> method. Once acquired, the attribute value stays within the view until its destruction. This nuance does not affect other view properties, such as size or lookup ability. The logging core automatically freezes the view at the right point, so users should not be bothered.</p>
+<p>
+</p>
+<div class="refsect2" lang="en">
+<a name="id452934"></a><h3>
+<a name="boost.log.basic_attribute_values__id272141types"></a><code class="computeroutput">basic_attribute_values_view</code> 
+        public
+       types</h3>
+<div class="orderedlist"><ol type="1"><li>
+<p>
+<span class="bold"><strong>typedef</strong></span> implementation_defined <a name="boost.log.basic_attribute_values__id272141.const_iterator"></a>const_iterator;</p>
+<p>Constant iterator type with bidirectional capabilities. </p>
+</li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id452972"></a><h3>
+<a name="boost.log.basic_attribute_values__id272141construct-copy-destruct"></a><code class="computeroutput">basic_attribute_values_view</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id272694-bb"></a>basic_attribute_values_view(<a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141.attribute_set_type">attribute_set_type</a> <span class="bold"><strong>const</strong></span> &amp; source_attrs, 
+                            <a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141.attribute_set_type">attribute_set_type</a> <span class="bold"><strong>const</strong></span> &amp; thread_attrs, 
+                            <a href="basic_attribute_values__id272141.html#boost.log.basic_attribute_values__id272141.attribute_set_type">attribute_set_type</a> <span class="bold"><strong>const</strong></span> &amp; global_attrs);</pre>
+<p>The constructor adopts three attribute sets into the view. The <span class="emphasis"><em>source_attrs</em></span> attributes have the greatest preference when a same-named attribute is found in several sets, <span class="emphasis"><em>global_attrs</em></span> has the least. The constructed view is not frozen.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">global_attrs</code></span></td>
+<td><p>A set of global attributes. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">source_attrs</code></span></td>
+<td><p>A set of source-specific attributes. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">thread_attrs</code></span></td>
+<td><p>A set of thread-specific attributes. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id272745-bb"></a>basic_attribute_values_view(<a href="basic_attribute_values__id272141.html" title="Class template basic_attribute_values_view">basic_attribute_values_view</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p>The original view is frozen. </p></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p>The constructed view is frozen, <code class="computeroutput">std::equal(begin(), end(), that.begin()) == true</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout">basic_attribute_values_view&amp; 
+<a name="id272777-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="basic_attribute_values__id272141.html" title="Class template basic_attribute_values_view">basic_attribute_values_view</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Assignment operator</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p>The original view is frozen. </p></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p>The resulting view is frozen, <code class="computeroutput">std::equal(begin(), end(), that.begin()) == true</code> </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id272772-bb"></a>~basic_attribute_values_view();</pre>
+<p>Destructor. Releases all referenced attribute values. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id453242"></a><h3>
+<a name="id272314-bb"></a><code class="computeroutput">basic_attribute_values_view</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id272317-bb"></a>swap(<a href="basic_attribute_values__id272141.html" title="Class template basic_attribute_values_view">basic_attribute_values_view</a> &amp; that) ;</pre>
+<p>Swaps two views</p>
+<p><span class="bold"><strong>Throws:</strong></span> Nothing. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id272344-bb"></a>begin() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the first element of the view. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id272359-bb"></a>end() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the after-the-last element of the view. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id272374-bb"></a>size() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Number of elements in the view. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id272390-bb"></a>empty() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>true if there are no elements in the container, false otherwise. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id272405-bb"></a>find(key_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method finds the attribute value by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id272436-bb"></a>find(string_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method finds the attribute value by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id272467-bb"></a>find(<span class="bold"><strong>const</strong></span> char_type * key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method finds the attribute value by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">mapped_type</span> <a name="id272498-bb"></a><span class="bold"><strong>operator</strong></span>[](key_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Alternative lookup syntax.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A pointer to the attribute value if it is found with <span class="emphasis"><em>key</em></span>, default-constructed mapped value otherwise. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">mapped_type</span> <a name="id272529-bb"></a><span class="bold"><strong>operator</strong></span>[](string_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Alternative lookup syntax.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A pointer to the attribute value if it is found with <span class="emphasis"><em>key</em></span>, default-constructed mapped value otherwise. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">mapped_type</span> <a name="id272560-bb"></a><span class="bold"><strong>operator</strong></span>[](<span class="bold"><strong>const</strong></span> char_type * key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Alternative lookup syntax.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A pointer to the attribute value if it is found with <span class="emphasis"><em>key</em></span>, default-constructed mapped value otherwise. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id272592-bb"></a>count(key_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method counts the number of the attribute value occurrences in the view. Since there can be only one attribute value with a particular key, the method always return 0 or 1.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of times the attribute value is found in the container. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id272620-bb"></a>count(string_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method counts the number of the attribute value occurrences in the view. Since there can be only one attribute value with a particular key, the method always return 0 or 1.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of times the attribute value is found in the container. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id272648-bb"></a>count(<span class="bold"><strong>const</strong></span> char_type * key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method counts the number of the attribute value occurrences in the view. Since there can be only one attribute value with a particular key, the method always return 0 or 1.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of times the attribute value is found in the container. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id272677-bb"></a>freeze() ;</pre>
+<p>The method acquires values of all adopted attributes.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p>The view is frozen </p></td>
+</tr></tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="swap_id272088.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../attributes.html#header.boost.log.attributes.attribute_values_view_hpp"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="swap_id272825.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,887 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_attribute_set</title>
+<link rel="stylesheet" href="../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../attributes.html#header.boost.log.attributes.attribute_set_hpp" title="Header &lt;boost/log/attributes/attribute_set.hpp&gt;">
+<link rel="prev" href="attribute.html" title="Struct attribute">
+<link rel="next" href="swap_id272088.html" title="Function template swap">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="attribute.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../attributes.html#header.boost.log.attributes.attribute_set_hpp"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="swap_id272088.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.basic_attribute_set"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_attribute_set</span></h2>
+<p>boost::log::basic_attribute_set &#8212; An attribute set class. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../attributes.html#header.boost.log.attributes.attribute_set_hpp" title="Header &lt;boost/log/attributes/attribute_set.hpp&gt;">boost/log/attributes/attribute_set.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a> {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// <a href="basic_attribute_set.html#boost.log.basic_attribute_settypes">types</a></em></span>
+  <span class="bold"><strong>typedef</strong></span> CharT                                    <a name="boost.log.basic_attribute_set.char_type"></a>char_type;        <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::basic_string&lt; char_type &gt;           <a name="boost.log.basic_attribute_set.string_type"></a>string_type;      <span class="emphasis"><em>// String type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> basic_slim_string&lt; char_type &gt;           <a name="boost.log.basic_attribute_set.key_type"></a>key_type;         <span class="emphasis"><em>// Key type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> shared_ptr&lt; <a href="attribute.html" title="Struct attribute">attribute</a> &gt;                  <a name="boost.log.basic_attribute_set.mapped_type"></a>mapped_type;      <span class="emphasis"><em>// Mapped attribute type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::pair&lt; <span class="bold"><strong>const</strong></span> key_type, mapped_type &gt; <a name="boost.log.basic_attribute_set.value_type"></a>value_type;       <span class="emphasis"><em>// Value type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::allocator&lt; value_type &gt;             <a name="boost.log.basic_attribute_set.allocator_type"></a>allocator_type;   <span class="emphasis"><em>// Allocator type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::reference                <a name="boost.log.basic_attribute_set.reference"></a>reference;        <span class="emphasis"><em>// Reference type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_reference          <a name="boost.log.basic_attribute_set.const_reference"></a>const_reference;  <span class="emphasis"><em>// Const reference type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::pointer                  <a name="boost.log.basic_attribute_set.pointer"></a>pointer;          <span class="emphasis"><em>// Pointer type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_pointer            <a name="boost.log.basic_attribute_set.const_pointer"></a>const_pointer;    <span class="emphasis"><em>// Const pointer type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::size_type                <a name="boost.log.basic_attribute_set.size_type"></a>size_type;        <span class="emphasis"><em>// Size type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::difference_type          <a name="boost.log.basic_attribute_set.difference_type"></a>difference_type;  <span class="emphasis"><em>// Difference type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> implementation_defined <a href="basic_attribute_set.html#boost.log.basic_attribute_set.iterator">iterator</a>;
+  <span class="bold"><strong>typedef</strong></span> implementation_defined <a href="basic_attribute_set.html#boost.log.basic_attribute_set.const_iterator">const_iterator</a>;
+
+  <span class="emphasis"><em>// <a href="basic_attribute_set.html#boost.log.basic_attribute_setconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_attribute_set.html#id272006-bb">basic_attribute_set</a>();
+  <a href="basic_attribute_set.html#id272019-bb">basic_attribute_set</a>(<a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a> <span class="bold"><strong>const</strong></span> &amp;);
+  basic_attribute_set&amp; <a href="basic_attribute_set.html#id272045-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_attribute_set.html#id272040-bb">~basic_attribute_set</a>();
+
+  <span class="emphasis"><em>// <a href="basic_attribute_set.html#id271092-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_set.html#id271095-bb">swap</a>(<a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a> &amp;) ;
+  <span class="type">iterator</span> <a href="basic_attribute_set.html#id271122-bb">begin</a>() ;
+  <span class="type">iterator</span> <a href="basic_attribute_set.html#id271137-bb">end</a>() ;
+  <span class="type">const_iterator</span> <a href="basic_attribute_set.html#id271152-bb">begin</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_attribute_set.html#id271168-bb">end</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_set.html#id271183-bb">size</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_attribute_set.html#id271198-bb">empty</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">iterator</span> <a href="basic_attribute_set.html#id271214-bb">find</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">iterator</span> <a href="basic_attribute_set.html#id271241-bb">find</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">iterator</span> <a href="basic_attribute_set.html#id271272-bb">find</a>(<span class="bold"><strong>const</strong></span> char_type *) ;
+  <span class="type">const_iterator</span> <a href="basic_attribute_set.html#id271303-bb">find</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_attribute_set.html#id271334-bb">find</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_attribute_set.html#id271364-bb">find</a>(<span class="bold"><strong>const</strong></span> char_type *) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_set.html#id271396-bb">count</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_set.html#id271424-bb">count</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_attribute_set.html#id271452-bb">count</a>(<span class="bold"><strong>const</strong></span> char_type *) <span class="bold"><strong>const</strong></span>;
+  <span class="type">reference_proxy</span> <a href="basic_attribute_set.html#id271481-bb"><span class="bold"><strong>operator</strong></span>[]</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">reference_proxy</span> <a href="basic_attribute_set.html#id271531-bb"><span class="bold"><strong>operator</strong></span>[]</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">reference_proxy</span> <a href="basic_attribute_set.html#id271582-bb"><span class="bold"><strong>operator</strong></span>[]</a>(<span class="bold"><strong>const</strong></span> char_type *) ;
+  <span class="type">mapped_type</span> <a href="basic_attribute_set.html#id271632-bb"><span class="bold"><strong>operator</strong></span>[]</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">mapped_type</span> <a href="basic_attribute_set.html#id271660-bb"><span class="bold"><strong>operator</strong></span>[]</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+  <span class="type">mapped_type</span> <a href="basic_attribute_set.html#id271688-bb"><span class="bold"><strong>operator</strong></span>[]</a>(<span class="bold"><strong>const</strong></span> char_type *) <span class="bold"><strong>const</strong></span>;
+  <span class="type">std::pair&lt; iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> <a href="basic_attribute_set.html#id271716-bb">insert</a>(key_type <span class="bold"><strong>const</strong></span> &amp;, mapped_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">std::pair&lt; iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> <a href="basic_attribute_set.html#id271754-bb">insert</a>(const_reference) ;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> FwdIteratorT&gt; <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_set.html#id271782-bb">insert</a>(FwdIteratorT, FwdIteratorT) ;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> FwdIteratorT, <span class="bold"><strong>typename</strong></span> OutputIteratorT&gt; 
+    <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_set.html#id271822-bb">insert</a>(FwdIteratorT, FwdIteratorT, OutputIteratorT) ;
+  <span class="type">size_type</span> <a href="basic_attribute_set.html#id271877-bb">erase</a>(key_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_set.html#id271908-bb">erase</a>(iterator) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_set.html#id271939-bb">erase</a>(iterator, iterator) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_attribute_set.html#id271986-bb">clear</a>() ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id449672"></a><h2>Description</h2>
+<p>An attribute set is an associative container with attribute name as a key and pointer to the attribute as a mapped value. The container allows storing only one element for each distinct key value. In most regards attribute set container provides interface similar to <code class="computeroutput">std::map</code>. However, there are differences in <code class="computeroutput">operator</code>[] semantics and a number of optimizations with regard to iteration. Besides, attribute names are stored as a read-only <code class="computeroutput">slim_string</code>'s instead of <code class="computeroutput">std::string</code>, which is also saves memory and CPU time. </p>
+<div class="refsect2" lang="en">
+<a name="id449705"></a><h3>
+<a name="boost.log.basic_attribute_settypes"></a><code class="computeroutput">basic_attribute_set</code> 
+        public
+       types</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<p>
+<span class="bold"><strong>typedef</strong></span> implementation_defined <a name="boost.log.basic_attribute_set.iterator"></a>iterator;</p>
+<p>Iterator type. The iterator complies to the bidirectional iterator requirements. </p>
+</li>
+<li>
+<p>
+<span class="bold"><strong>typedef</strong></span> implementation_defined <a name="boost.log.basic_attribute_set.const_iterator"></a>const_iterator;</p>
+<p>Constant iterator type. The iterator complies to the bidirectional iterator requirements with read-only capabilities. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id449760"></a><h3>
+<a name="boost.log.basic_attribute_setconstruct-copy-destruct"></a><code class="computeroutput">basic_attribute_set</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id272006-bb"></a>basic_attribute_set();</pre>
+<p>Default constructor.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">empty() == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id272019-bb"></a>basic_attribute_set(<a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">std::equal(begin(), end(), that.begin()) == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout">basic_attribute_set&amp; <a name="id272045-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Assignment operator.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">std::equal(begin(), end(), that.begin()) == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id272040-bb"></a>~basic_attribute_set();</pre>
+<p>Destructor. All stored references to attributes are released. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id449931"></a><h3>
+<a name="id271092-bb"></a><code class="computeroutput">basic_attribute_set</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id271095-bb"></a>swap(<a href="basic_attribute_set.html" title="Class template basic_attribute_set">basic_attribute_set</a> &amp; that) ;</pre>
+<p>Swaps two instances of the container.</p>
+<p><span class="bold"><strong>Throws:</strong></span> Nothing. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">iterator</span> <a name="id271122-bb"></a>begin() ;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the first element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">iterator</span> <a name="id271137-bb"></a>end() ;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the after-the-last element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id271152-bb"></a>begin() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the first element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id271168-bb"></a>end() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the after-the-last element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id271183-bb"></a>size() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Number of elements in the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id271198-bb"></a>empty() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>true if there are no elements in the container, false otherwise. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">iterator</span> <a name="id271214-bb"></a>find(key_type <span class="bold"><strong>const</strong></span> &amp; key) ;</pre>
+<p>The method finds the attribute by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or end() if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">iterator</span> <a name="id271241-bb"></a>find(string_type <span class="bold"><strong>const</strong></span> &amp; key) ;</pre>
+<p>The method finds the attribute by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">iterator</span> <a name="id271272-bb"></a>find(<span class="bold"><strong>const</strong></span> char_type * key) ;</pre>
+<p>The method finds the attribute by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id271303-bb"></a>find(key_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method finds the attribute by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id271334-bb"></a>find(string_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method finds the attribute by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id271364-bb"></a>find(<span class="bold"><strong>const</strong></span> char_type * key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method finds the attribute by name.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Iterator to the found element or <code class="computeroutput">end()</code> if the attribute with such name is not found. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id271396-bb"></a>count(key_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method counts the number of the attribute occurrences in the container. Since there can be only one attribute with a particular key, the method always return 0 or 1.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of times the attribute is found in the container. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id271424-bb"></a>count(string_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method counts the number of the attribute occurrences in the container. Since there can be only one attribute with a particular key, the method always return 0 or 1.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of times the attribute is found in the container. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id271452-bb"></a>count(<span class="bold"><strong>const</strong></span> char_type * key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>The method counts the number of the attribute occurrences in the container. Since there can be only one attribute with a particular key, the method always return 0 or 1.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of times the attribute is found in the container. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">reference_proxy</span> <a name="id271481-bb"></a><span class="bold"><strong>operator</strong></span>[](key_type <span class="bold"><strong>const</strong></span> &amp; key) ;</pre>
+<p>Combined lookup/insertion operator. The operator semantics depends on the further usage of the returned reference. </p>
+<div class="itemizedlist"><ul type="disc">
+<li><p>If the reference is used as an assignment target, the assignment expression is equivalent to element insertion, where the element is composed of the second argument of the <code class="computeroutput">operator</code>[] as a key and the second argument of assignment as a mapped value. </p></li>
+<li><p>If the returned reference is used in context where a conversion to the mapped type is required, the result of the conversion is equivalent to the mapped value found with the second argument of the <code class="computeroutput">operator</code>[] as a key, if such an element exists in the container, or a default-constructed mapped value, if an element does not exist in the container.</p></li>
+</ul></div>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A smart reference object of unspecified type. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">reference_proxy</span> <a name="id271531-bb"></a><span class="bold"><strong>operator</strong></span>[](string_type <span class="bold"><strong>const</strong></span> &amp; key) ;</pre>
+<p>Combined lookup/insertion operator. The operator semantics depends on the further usage of the returned reference. </p>
+<div class="itemizedlist"><ul type="disc">
+<li><p>If the reference is used as an assignment target, the assignment expression is equivalent to element insertion, where the element is composed of the second argument of the <code class="computeroutput">operator</code>[] as a key and the second argument of assignment as a mapped value. </p></li>
+<li><p>If the returned reference is used in context where a conversion to the mapped type is required, the result of the conversion is equivalent to the mapped value found with the second argument of the <code class="computeroutput">operator</code>[] as a key, if such an element exists in the container, or a default-constructed mapped value, if an element does not exist in the container.</p></li>
+</ul></div>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A smart reference object of unspecified type. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">reference_proxy</span> <a name="id271582-bb"></a><span class="bold"><strong>operator</strong></span>[](<span class="bold"><strong>const</strong></span> char_type * key) ;</pre>
+<p>Combined lookup/insertion operator. The operator semantics depends on the further usage of the returned reference. </p>
+<div class="itemizedlist"><ul type="disc">
+<li><p>If the reference is used as an assignment target, the assignment expression is equivalent to element insertion, where the element is composed of the second argument of the <code class="computeroutput">operator</code>[] as a key and the second argument of assignment as a mapped value. </p></li>
+<li><p>If the returned reference is used in context where a conversion to the mapped type is required, the result of the conversion is equivalent to the mapped value found with the second argument of the <code class="computeroutput">operator</code>[] as a key, if such an element exists in the container, or a default-constructed mapped value, if an element does not exist in the container.</p></li>
+</ul></div>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A smart reference object of unspecified type. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">mapped_type</span> <a name="id271632-bb"></a><span class="bold"><strong>operator</strong></span>[](key_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lookup operator</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>If an element with the corresponding attribute name is found in the container, its mapped value is returned. Otherwise a refault-constructed mapped value is returned. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">mapped_type</span> <a name="id271660-bb"></a><span class="bold"><strong>operator</strong></span>[](string_type <span class="bold"><strong>const</strong></span> &amp; key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lookup operator</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>If an element with the corresponding attribute name is found in the container, its mapped value is returned. Otherwise a refault-constructed mapped value is returned. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">mapped_type</span> <a name="id271688-bb"></a><span class="bold"><strong>operator</strong></span>[](<span class="bold"><strong>const</strong></span> char_type * key) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Lookup operator</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. Must not be NULL, must point to a zero-terminated string. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>If an element with the corresponding attribute name is found in the container, its mapped value is returned. Otherwise a refault-constructed mapped value is returned. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">std::pair&lt; iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> 
+<a name="id271716-bb"></a>insert(key_type <span class="bold"><strong>const</strong></span> &amp; key, mapped_type <span class="bold"><strong>const</strong></span> &amp; data) ;</pre>
+<p>Insertion method</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">data</code></span></td>
+<td><p>Pointer to the attribute. Must not be NULL. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A pair of values. If second is true, the insertion succeeded and the first component points to the inserted element. Otherwise the first component points to the element that prevents insertion. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">std::pair&lt; iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> <a name="id271754-bb"></a>insert(const_reference value) ;</pre>
+<p>Insertion method</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">value</code></span></td>
+<td><p>An element to be inserted. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>A pair of values. If second is true, the insertion succeeded and the first component points to the inserted element. Otherwise the first component points to the element that prevents insertion. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> FwdIteratorT&gt; 
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id271782-bb"></a>insert(FwdIteratorT begin, FwdIteratorT end) ;</pre>
+<p>Mass insertion method.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">begin</code></span></td>
+<td><p>A forward iterator that points to the first element to be inserted. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">end</code></span></td>
+<td><p>A forward iterator that points to the after-the-last element to be inserted. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> FwdIteratorT, <span class="bold"><strong>typename</strong></span> OutputIteratorT&gt; 
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id271822-bb"></a>insert(FwdIteratorT begin, FwdIteratorT end, OutputIteratorT out) ;</pre>
+<p>Mass insertion method with ability to acquire iterators to the inserted elements.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">begin</code></span></td>
+<td><p>A forward iterator that points to the first element to be inserted. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">end</code></span></td>
+<td><p>A forward iterator that points to the after-the-last element to be inserted. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">out</code></span></td>
+<td><p>An output iterator that receives results of insertion of the elements </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id271877-bb"></a>erase(key_type <span class="bold"><strong>const</strong></span> &amp; key) ;</pre>
+<p>The method erases all attributes with the specified name</p>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">key</code></span></td>
+<td><p>Attribute name. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p>All iterators to the erased elements become invalid. </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Tne number of erased elements </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id271908-bb"></a>erase(iterator it) ;</pre>
+<p>The method erases the specified attribute</p>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">it</code></span></td>
+<td><p>A valid iterator to the element to be erased. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p>All iterators to the erased element become invalid. </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Tne number of erased elements </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id271939-bb"></a>erase(iterator begin, iterator end) ;</pre>
+<p>The method erases all attributes within the specified range</p>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">begin</code></span></td>
+<td><p>An iterator that points to the first element to be erased. </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">end</code></span></td>
+<td><p>An iterator that points to the after-the-last element to be erased. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><span class="emphasis"><em>end</em></span> is reachable from <span class="emphasis"><em>begin</em></span> with a finite number of increments. </p></td>
+</tr>
+<tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p>All iterators to the erased elements become invalid. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id271986-bb"></a>clear() ;</pre>
+<p>The method removes all elements from the container</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">empty() == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="attribute.html"><img src="../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../attributes.html#header.boost.log.attributes.attribute_set_hpp"><img src="../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="swap_id272088.html"><img src="../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

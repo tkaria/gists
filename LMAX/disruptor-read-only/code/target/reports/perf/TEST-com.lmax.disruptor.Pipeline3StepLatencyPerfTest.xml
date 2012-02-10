@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="byah" name="com.lmax.disruptor.Pipeline3StepLatencyPerfTest" tests="1" time="534.964" timestamp="2011-07-06T14:09:08">
+  <properties>
+    <property name="dir.test.lib" value="lib/test" />
+    <property name="dir.docs" value="target/docs" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.boot.library.path" value="/usr/local/jre1.6.0_26/lib/amd64" />
+    <property name="java.vm.version" value="20.1-b02" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on April 26 2010" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="user.country" value="US" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="dir.main.src" value="src/main" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="user.dir" value="/home/timir/capitalk/timir/LMAX/disruptor-read-only/code" />
+    <property name="java.runtime.version" value="1.6.0_26-b03" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="basedir" value="/home/timir/capitalk/timir/LMAX/disruptor-read-only/code" />
+    <property name="dir.test.src" value="src/test" />
+    <property name="java.endorsed.dirs" value="/usr/local/jre1.6.0_26/lib/endorsed" />
+    <property name="os.arch" value="amd64" />
+    <property name="dir.perf.src" value="src/perf" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="ant.core.lib" value="/usr/share/java/ant-1.7.1.jar" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="os.name" value="Linux" />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="ant.project.name" value="disruptor" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="java.library.path" value="/usr/local/jre1.6.0_26/lib/amd64/server:/usr/local/jre1.6.0_26/lib/amd64:/usr/local/jre1.6.0_26/../lib/amd64:/usr/local/boost_1_45_0/stage/lib/:/usr/local/atlas/lib::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
+    <property name="java.class.version" value="50.0" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="dir.dist" value="target/dist" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.version" value="2.6.32-131.0.15.el6.x86_64" />
+    <property name="ant.file" value="/home/timir/capitalk/timir/LMAX/disruptor-read-only/code/build.xml" />
+    <property name="user.home" value="/home/timir" />
+    <property name="user.timezone" value="" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.class.path" value="/usr/share/java/ant.jar:/usr/share/java/ant-launcher.jar:/usr/share/java/jaxp_parser_impl.jar:/usr/share/java/xml-commons-apis.jar:/usr/share/java/antlr.jar:/usr/share/java/ant/ant-antlr.jar:/usr/share/java/bcel.jar:/usr/share/java/ant/ant-apache-bcel.jar:/usr/share/java/bsf.jar:/usr/share/java/ant/ant-apache-bsf.jar:/usr/share/java/log4j.jar:/usr/share/java/ant/ant-apache-log4j.jar:/usr/share/java/oro.jar:/usr/share/java/ant/ant-apache-oro.jar:/usr/share/java/regexp.jar:/usr/share/java/ant/ant-apache-regexp.jar:/usr/share/java/xml-commons-resolver.jar:/usr/share/java/ant/ant-apache-resolver.jar:/usr/share/java/jakarta-commons-logging.jar:/usr/share/java/ant/ant-commons-logging.jar:/usr/share/java/jakarta-commons-net.jar:/usr/share/java/ant/ant-commons-net.jar:/usr/share/java/javamail.jar:/usr/share/java/jaf.jar:/usr/share/java/ant/ant-javamail.jar:/usr/share/java/jdepend.jar:/usr/share/java/ant/ant-jdepend.jar:/usr/share/java/jsch.jar:/usr/share/java/ant/ant-jsch.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-nodeps.jar:/usr/share/java/ant/ant-swing.jar:/usr/share/java/jaxp_transform_impl.jar:/usr/share/java/ant/ant-trax.jar:/usr/share/java/xalan-j2-serializer.jar:/home/timir/.ant/lib/ivy.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-commons-logging.jar:/usr/share/ant/lib/ant-commons-net.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant-apache-bsf.jar:/usr/share/ant/lib/ant-swing.jar:/usr/share/ant/lib/ant-jsch.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-apache-bcel.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-antlr.jar:/usr/share/ant/lib/ant-apache-resolver.jar:/usr/share/ant/lib/ant-apache-regexp.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-apache-oro.jar:/usr/share/ant/lib/ant-apache-log4j.jar:/usr/share/ant/lib/ant-javamail.jar:/usr/share/ant/lib/ant-jdepend.jar" />
+    <property name="user.name" value="timir" />
+    <property name="ant.file.disruptor" value="/home/timir/capitalk/timir/LMAX/disruptor-read-only/code/build.xml" />
+    <property name="dir.reports" value="target/reports" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="java.home" value="/usr/local/jre1.6.0_26" />
+    <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  perf:test" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="user.language" value="en" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="java.version" value="1.6.0_26" />
+    <property name="java.ext.dirs" value="/usr/local/jre1.6.0_26/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="sun.boot.class.path" value="/usr/local/jre1.6.0_26/lib/resources.jar:/usr/local/jre1.6.0_26/lib/rt.jar:/usr/local/jre1.6.0_26/lib/sunrsasign.jar:/usr/local/jre1.6.0_26/lib/jsse.jar:/usr/local/jre1.6.0_26/lib/jce.jar:/usr/local/jre1.6.0_26/lib/charsets.jar:/usr/local/jre1.6.0_26/lib/modules/jdk.boot.jar:/usr/local/jre1.6.0_26/classes" />
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="file.separator" value="/" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="dir.test.build" value="target/test/classes" />
+    <property name="dir.main.build" value="target/main/classes" />
+    <property name="sun.cpu.isalist" value="" />
+  </properties>
+  <testcase classname="com.lmax.disruptor.Pipeline3StepLatencyPerfTest" name="shouldCompareDisruptorVsQueues" time="534.956" />
+  <system-out><![CDATA[Pipeline3StepLatencyPerfTest run 0 Disruptor Histogram{min=84, max=8286818, mean=2804.35, 99%=256, 99.99%=8388608, [2=0, 4=0, 8=0, 16=0, 32=0, 64=0, 128=10341393, 256=39265164, 512=136085, 1024=125203, 2048=18045, 4096=16157, 8192=9578, 16384=8996, 32768=6923, 65536=6506, 131072=8136, 262144=15565, 524288=13490, 1048576=4954, 2097152=2959, 4194304=5528, 8388608=15318, 16777216=0, 33554432=0, 67108864=0, 134217728=0, 268435456=0, 536870912=0, 1073741824=0, 9223372036854775807=0]}
+2	0
+4	0
+8	0
+16	0
+32	0
+64	0
+128	10341393
+256	39265164
+512	136085
+1024	125203
+2048	18045
+4096	16157
+8192	9578
+16384	8996
+32768	6923
+65536	6506
+131072	8136
+262144	15565
+524288	13490
+1048576	4954
+2097152	2959
+4194304	5528
+8388608	15318
+16777216	0
+33554432	0
+67108864	0
+134217728	0
+268435456	0
+536870912	0
+1073741824	0
+9223372036854775807	0
+Pipeline3StepLatencyPerfTest run 0 Queues Histogram{min=624, max=54792686, mean=12444722.33, 99%=67108864, 99.99%=67108864, [2=0, 4=0, 8=0, 16=0, 32=0, 64=0, 128=0, 256=0, 512=0, 1024=704, 2048=1375877, 4096=7622848, 8192=16935789, 16384=6057706, 32768=126952, 65536=32461, 131072=49551, 262144=85665, 524288=106585, 1048576=111190, 2097152=129372, 4194304=153754, 8388608=94890, 16777216=191845, 33554432=6810435, 67108864=10114376, 134217728=0, 268435456=0, 536870912=0, 1073741824=0, 9223372036854775807=0]}
+2	0
+4	0
+8	0
+16	0
+32	0
+64	0
+128	0
+256	0
+512	0
+1024	704
+2048	1375877
+4096	7622848
+8192	16935789
+16384	6057706
+32768	126952
+65536	32461
+131072	49551
+262144	85665
+524288	106585
+1048576	111190
+2097152	129372
+4194304	153754
+8388608	94890
+16777216	191845
+33554432	6810435
+67108864	10114376
+134217728	0
+268435456	0
+536870912	0
+1073741824	0
+9223372036854775807	0
+Pipeline3StepLatencyPerfTest run 1 Disruptor Histogram{min=62, max=3022311, mean=592.32, 99%=512, 99.99%=2097152, [2=0, 4=0, 8=0, 16=0, 32=0, 64=11, 128=3559793, 256=44501395, 512=1618291, 1024=218180, 2048=20642, 4096=15902, 8192=10502, 16384=6256, 32768=5891, 65536=6523, 131072=7149, 262144=13762, 524288=8303, 1048576=1954, 2097152=2935, 4194304=2511, 8388608=0, 16777216=0, 33554432=0, 67108864=0, 134217728=0, 268435456=0, 536870912=0, 1073741824=0, 9223372036854775807=0]}
+2	0
+4	0
+8	0
+16	0
+32	0
+64	11
+128	3559793
+256	44501395
+512	1618291
+1024	218180
+2048	20642
+4096	15902
+8192	10502
+16384	6256
+32768	5891
+65536	6523
+131072	7149
+262144	13762
+524288	8303
+1048576	1954
+2097152	2935
+4194304	2511
+8388608	0
+16777216	0
+33554432	0
+67108864	0
+134217728	0
+268435456	0
+536870912	0
+1073741824	0
+9223372036854775807	0
+Pipeline3StepLatencyPerfTest run 1 Queues Histogram{min=633, max=50547176, mean=4683752.57, 99%=67108864, 99.99%=67108864, [2=0, 4=0, 8=0, 16=0, 32=0, 64=0, 128=0, 256=0, 512=0, 1024=645, 2048=2371675, 4096=9875705, 8192=22589818, 16384=8311271, 32768=118235, 65536=45743, 131072=75701, 262144=153119, 524288=218023, 1048576=217854, 2097152=180932, 4194304=153815, 8388608=34402, 16777216=67959, 33554432=182713, 67108864=5402390, 134217728=0, 268435456=0, 536870912=0, 1073741824=0, 9223372036854775807=0]}
+2	0
+4	0
+8	0
+16	0
+32	0
+64	0
+128	0
+256	0
+512	0
+1024	645
+2048	2371675
+4096	9875705
+8192	22589818
+16384	8311271
+32768	118235
+65536	45743
+131072	75701
+262144	153119
+524288	218023
+1048576	217854
+2097152	180932
+4194304	153815
+8388608	34402
+16777216	67959
+33554432	182713
+67108864	5402390
+134217728	0
+268435456	0
+536870912	0
+1073741824	0
+9223372036854775807	0
+Pipeline3StepLatencyPerfTest run 2 Disruptor Histogram{min=62, max=3448581, mean=673.57, 99%=512, 99.99%=2097152, [2=0, 4=0, 8=0, 16=0, 32=0, 64=23, 128=1194491, 256=48291258, 512=215625, 1024=191218, 2048=20220, 4096=22512, 8192=14551, 16384=6272, 32768=5577, 65536=4796, 131072=4510, 262144=11093, 524288=7585, 1048576=3264, 2097152=3479, 4194304=3526, 8388608=0, 16777216=0, 33554432=0, 67108864=0, 134217728=0, 268435456=0, 536870912=0, 1073741824=0, 9223372036854775807=0]}
+2	0
+4	0
+8	0
+16	0
+32	0
+64	23
+128	1194491
+256	48291258
+512	215625
+1024	191218
+2048	20220
+4096	22512
+8192	14551
+16384	6272
+32768	5577
+65536	4796
+131072	4510
+262144	11093
+524288	7585
+1048576	3264
+2097152	3479
+4194304	3526
+8388608	0
+16777216	0
+33554432	0
+67108864	0
+134217728	0
+268435456	0
+536870912	0
+1073741824	0
+9223372036854775807	0
+Pipeline3StepLatencyPerfTest run 2 Queues Histogram{min=647, max=19949999, mean=29829.95, 99%=262144, 99.99%=33554432, [2=0, 4=0, 8=0, 16=0, 32=0, 64=0, 128=0, 256=0, 512=0, 1024=335, 2048=1766993, 4096=11744109, 8192=25999299, 16384=9543728, 32768=281928, 65536=32930, 131072=45807, 262144=92494, 524288=108886, 1048576=97949, 2097152=101863, 4194304=140598, 8388608=23916, 16777216=13890, 33554432=5275, 67108864=0, 134217728=0, 268435456=0, 536870912=0, 1073741824=0, 9223372036854775807=0]}
+2	0
+4	0
+8	0
+16	0
+32	0
+64	0
+128	0
+256	0
+512	0
+1024	335
+2048	1766993
+4096	11744109
+8192	25999299
+16384	9543728
+32768	281928
+65536	32930
+131072	45807
+262144	92494
+524288	108886
+1048576	97949
+2097152	101863
+4194304	140598
+8388608	23916
+16777216	13890
+33554432	5275
+67108864	0
+134217728	0
+268435456	0
+536870912	0
+1073741824	0
+9223372036854775807	0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

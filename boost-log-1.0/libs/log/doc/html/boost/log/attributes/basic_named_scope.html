@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_named_scope</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp" title="Header &lt;boost/log/attributes/named_scope.hpp&gt;">
+<link rel="prev" href="basic_named_scope_list.html" title="Class template basic_named_scope_list">
+<link rel="next" href="basic_named_scope/sentry.html" title="Struct sentry">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_named_scope_list.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_named_scope/sentry.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.attributes.basic_named_scope"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_named_scope</span></h2>
+<p>boost::log::attributes::basic_named_scope &#8212; A class of an attribute that holds stack of named scopes of the current thread. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp" title="Header &lt;boost/log/attributes/named_scope.hpp&gt;">boost/log/attributes/named_scope.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_named_scope.html" title="Class template basic_named_scope">basic_named_scope</a> : <span class="bold"><strong>public</strong></span> attribute {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> CharT                               <a name="boost.log.attributes.basic_named_scope.char_type"></a>char_type;    <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> <a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a>&lt; char_type &gt; <a name="boost.log.attributes.basic_named_scope.scope_stack"></a>scope_stack;  <span class="emphasis"><em>// Scope names stack (the attribute value type). </em></span>
+  <span class="bold"><strong>typedef</strong></span> scope_stack::value_type             <a name="boost.log.attributes.basic_named_scope.scope_entry"></a>scope_entry;  <span class="emphasis"><em>// Scope entry. </em></span>
+
+  <span class="emphasis"><em>// member classes/structs/unions</em></span>
+
+  <span class="emphasis"><em>// Sentry object class to automatically push and pop scopes. </em></span>
+  <span class="bold"><strong>struct</strong></span> <a href="basic_named_scope/sentry.html" title="Struct sentry">sentry</a> {
+    <span class="emphasis"><em>// types</em></span>
+    <span class="bold"><strong>typedef</strong></span> <a href="basic_named_scope.html" title="Class template basic_named_scope">basic_named_scope</a>&lt; char_type &gt; <a href="basic_named_scope/sentry.html#boost.log.attributes.basic_named_scope.sentry.named_scope_type">named_scope_type</a>;  <span class="emphasis"><em>// Attribute type. </em></span>
+
+    <span class="emphasis"><em>// <a href="basic_named_scope/sentry.html#boost.log.attributes.basic_named_scope.sentryconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+    <a href="basic_named_scope/sentry.html#id274344-bb">sentry</a>(basic_string_literal&lt; char_type &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+           basic_string_literal&lt; char_type &gt; <span class="bold"><strong>const</strong></span> &amp;, <span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>int</strong></span>);
+    <a href="basic_named_scope/sentry.html#id274380-bb">~sentry</a>();
+  };
+
+  <span class="emphasis"><em>// <a href="basic_named_scope.html#boost.log.attributes.basic_named_scopeconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_named_scope.html#id274435-bb">basic_named_scope</a>();
+
+  <span class="emphasis"><em>// <a href="basic_named_scope.html#id274412-bb">public member functions</a></em></span>
+  <span class="type">shared_ptr&lt; <a href="../attribute_value.html" title="Struct attribute_value">attribute_value</a> &gt;</span> <a href="basic_named_scope.html#id274415-bb">get_value</a>() ;
+
+  <span class="emphasis"><em>// <a href="basic_named_scope.html#id274439-bb">public static functions</a></em></span>
+  <span class="type"><span class="bold"><strong>static</strong></span> <span class="bold"><strong>void</strong></span></span> <a href="basic_named_scope.html#id274443-bb">push_scope</a>(scope_entry <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>static</strong></span> <span class="bold"><strong>void</strong></span></span> <a href="basic_named_scope.html#id274468-bb">pop_scope</a>() ;
+  <span class="type"><span class="bold"><strong>static</strong></span> <a href="basic_named_scope.html#boost.log.attributes.basic_named_scope.scope_stack">scope_stack</a> <span class="bold"><strong>const</strong></span> &amp;</span> <a href="basic_named_scope.html#id274487-bb">get_scopes</a>() ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id459311"></a><h2>Description</h2>
+<p>The basic_named_scope attribute is essentially a hook to the thread-specific instance of scope list. This means that the attribute will generate different values if get_value is called in different threads. The attribute generates value with stored type <code class="computeroutput">basic_named_scope_list&lt; CharT &gt;</code>.</p>
+<p>The attribute class can also be used to gain access to the scope stack instance, e.g. to get its copy or to push or pop a scope entry. However, it is highly not recommended to maintain scope list manually. Use <code class="computeroutput">BOOST_LOG_NAMED_SCOPE</code> or <code class="computeroutput">BOOST_LOG_FUNCTION</code> macros instead. </p>
+<div class="refsect2" lang="en">
+<a name="id459341"></a><h3>
+<a name="boost.log.attributes.basic_named_scopeconstruct-copy-destruct"></a><code class="computeroutput">basic_named_scope</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><a name="id274435-bb"></a>basic_named_scope();</pre>
+<p>Constructor. Creates an attribute. </p>
+</li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id459376"></a><h3>
+<a name="id274412-bb"></a><code class="computeroutput">basic_named_scope</code> public member functions</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><span class="type">shared_ptr&lt; <a href="../attribute_value.html" title="Struct attribute_value">attribute_value</a> &gt;</span> <a name="id274415-bb"></a>get_value() ;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The actual attribute value. It shall not return NULL (exceptions shall be used to indicate errors). </p></td>
+</tr></tbody>
+</table></div>
+</li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id459433"></a><h3>
+<a name="id274439-bb"></a><code class="computeroutput">basic_named_scope</code> public static functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>static</strong></span> <span class="bold"><strong>void</strong></span></span> <a name="id274443-bb"></a>push_scope(scope_entry <span class="bold"><strong>const</strong></span> &amp; entry) ;</pre>
+<p>The method pushes the scope to the back of the current thread's scope list</p>
+<p><span class="bold"><strong>Throws:</strong></span> Nothing. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>static</strong></span> <span class="bold"><strong>void</strong></span></span> <a name="id274468-bb"></a>pop_scope() ;</pre>
+<p>The method pops the last pushed scope from the current thread's scope list</p>
+<p><span class="bold"><strong>Throws:</strong></span> Nothing. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>static</strong></span> <a href="basic_named_scope.html#boost.log.attributes.basic_named_scope.scope_stack">scope_stack</a> <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id274487-bb"></a>get_scopes() ;</pre>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The current thread's list of scopes</p></td>
+</tr>
+<tr>
+<td><span class="term">Notes:</span></td>
+<td><p>The returned reference is only valid until the current thread ends. The scopes in the returned container may change if the execution scope is changed (i.e. either <code class="computeroutput">push_scope</code> or <code class="computeroutput">pop_scope</code> is called). User has to copy the stack if he wants to keep it intact regardless of the execution scope. </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_named_scope_list.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_named_scope/sentry.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

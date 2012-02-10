@@ -1,0 +1,141 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_exception_handler_logger</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../logging_sources.html#header.boost.log.sources.exception_handler_feature_hpp" title="Header &lt;boost/log/sources/exception_handler_feature.hpp&gt;">
+<link rel="prev" href="wchannel_logger_mt.html" title="Class template wchannel_logger_mt">
+<link rel="next" href="exception_handler.html" title="Struct exception_handler">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="wchannel_logger_mt.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.exception_handler_feature_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="exception_handler.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.sources.basic_exception_handler_id282134"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_exception_handler_logger</span></h2>
+<p>boost::log::sources::basic_exception_handler_logger &#8212; Exception handler feature implementation. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../logging_sources.html#header.boost.log.sources.exception_handler_feature_hpp" title="Header &lt;boost/log/sources/exception_handler_feature.hpp&gt;">boost/log/sources/exception_handler_feature.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BaseT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_exception_handler_id282134.html" title="Class template basic_exception_handler_logger">basic_exception_handler_logger</a> {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::record_type     <a name="boost.log.sources.basic_exception_handler_id282134.record_type"></a>record_type;             <span class="emphasis"><em>// Log record type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::threading_model <a name="boost.log.sources.basic_exception_handler_id282134.threading_model"></a>threading_model;         <span class="emphasis"><em>// Threading model being used. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::final_type      <a name="boost.log.sources.basic_exception_handler_id282134.final_type"></a>final_type;              <span class="emphasis"><em>// Final logger type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> function0&lt; <span class="bold"><strong>void</strong></span> &gt;          <a name="boost.log.sources.basic_exception_handler_id282134.exception_handler_type"></a>exception_handler_type;  <span class="emphasis"><em>// Exception handler function type. </em></span>
+
+  <span class="emphasis"><em>// <a href="basic_exception_handler_id282134.html#boost.log.sources.basic_exception_handler_id282134construct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_exception_handler_id282134.html#id282241-bb">basic_exception_handler_logger</a>();
+  <a href="basic_exception_handler_id282134.html#id282246-bb">basic_exception_handler_logger</a>(<a href="basic_exception_handler_id282134.html" title="Class template basic_exception_handler_logger">basic_exception_handler_logger</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <a href="basic_exception_handler_id282134.html#id282259-bb">basic_exception_handler_logger</a>(ArgsT <span class="bold"><strong>const</strong></span> &amp;);
+
+  <span class="emphasis"><em>// <a href="basic_exception_handler_id282134.html#id282180-bb">public member functions</a></em></span>
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> HandlerT&gt; <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_exception_handler_id282134.html#id282184-bb">set_exception_handler</a>(HandlerT <span class="bold"><strong>const</strong></span> &amp;) ;
+
+  <span class="emphasis"><em>// <a href="basic_exception_handler_id282134.html#id282277-bb">protected member functions</a></em></span>
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type">record_type</span> <a href="basic_exception_handler_id282134.html#id282280-bb">open_record_unlocked</a>(ArgsT <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_exception_handler_id282134.html#id282308-bb">push_record_unlocked</a>(record_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_exception_handler_id282134.html#id282329-bb">swap_unlocked</a>(<a href="basic_exception_handler_id282134.html" title="Class template basic_exception_handler_logger">basic_exception_handler_logger</a> &amp;) ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id484748"></a><h2>Description</h2>
+<div class="refsect2" lang="en">
+<a name="id484752"></a><h3>
+<a name="boost.log.sources.basic_exception_handler_id282134construct-copy-destruct"></a><code class="computeroutput">basic_exception_handler_logger</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id282241-bb"></a>basic_exception_handler_logger();</pre>
+<p>Default constructor. The constructed logger does not have an exception handler. </p>
+</li>
+<li>
+<pre class="literallayout"><a name="id282246-bb"></a>basic_exception_handler_logger(<a href="basic_exception_handler_id282134.html" title="Class template basic_exception_handler_logger">basic_exception_handler_logger</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor </p>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <a name="id282259-bb"></a>basic_exception_handler_logger(ArgsT <span class="bold"><strong>const</strong></span> &amp; args);</pre>
+<p>Constructor with arguments. Passes arguments to other features. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id484852"></a><h3>
+<a name="id282180-bb"></a><code class="computeroutput">basic_exception_handler_logger</code> public member functions</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> HandlerT&gt; 
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id282184-bb"></a>set_exception_handler(HandlerT <span class="bold"><strong>const</strong></span> &amp; handler) ;</pre>
+<p>The method sets exception handler function. The function will be called with no arguments in case if an exception occurs during either <code class="computeroutput">open_record</code> or <code class="computeroutput">push_record</code> method execution. Since exception handler is called from a <code class="computeroutput">catch</code> statement, the exception can be rethrown in order to determine its type.</p>
+<p>By default no handler is installed, thus any exception is propagated as usual.</p>
+<p><code class="computeroutput">utility/exception_handler.hpp</code> </p>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">handler</code></span></td>
+<td><p>Exception handling function</p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Notes:</span></td>
+<td>
+<p>The exception handler can be invoked in several threads concurrently.</p>
+<p>Thread interruptions are not affected by exception handlers. </p>
+</td>
+</tr>
+</tbody>
+</table></div>
+</li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id484978"></a><h3>
+<a name="id282277-bb"></a><code class="computeroutput">basic_exception_handler_logger</code> protected member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type">record_type</span> <a name="id282280-bb"></a>open_record_unlocked(ArgsT <span class="bold"><strong>const</strong></span> &amp; args) ;</pre>
+<p>Unlocked <code class="computeroutput">open_record</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id282308-bb"></a>push_record_unlocked(record_type <span class="bold"><strong>const</strong></span> &amp; record) ;</pre>
+<p>Unlocked <code class="computeroutput">push_record</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id282329-bb"></a>swap_unlocked(<a href="basic_exception_handler_id282134.html" title="Class template basic_exception_handler_logger">basic_exception_handler_logger</a> &amp; that) ;</pre>
+<p>Unlocked swap </p>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="wchannel_logger_mt.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.exception_handler_feature_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="exception_handler.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

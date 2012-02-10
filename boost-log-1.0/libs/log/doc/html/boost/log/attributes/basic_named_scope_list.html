@@ -1,0 +1,265 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_named_scope_list</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp" title="Header &lt;boost/log/attributes/named_scope.hpp&gt;">
+<link rel="prev" href="basic_named_scope_entry.html" title="Struct template basic_named_scope_entry">
+<link rel="next" href="basic_named_scope.html" title="Class template basic_named_scope">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_named_scope_entry.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_named_scope.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.attributes.basic_named_scope_list"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_named_scope_list</span></h2>
+<p>boost::log::attributes::basic_named_scope_list &#8212; The class implements the list of scopes. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp" title="Header &lt;boost/log/attributes/named_scope.hpp&gt;">boost/log/attributes/named_scope.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a> {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// <a href="basic_named_scope_list.html#boost.log.attributes.basic_named_scope_listtypes">types</a></em></span>
+  <span class="bold"><strong>typedef</strong></span> CharT                                                  <a name="boost.log.attributes.basic_named_scope_list.char_type"></a>char_type;               <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::allocator&lt; <a href="basic_named_scope_entry.html" title="Struct template basic_named_scope_entry">basic_named_scope_entry</a>&lt; char_type &gt; &gt; <a name="boost.log.attributes.basic_named_scope_list.allocator_type"></a>allocator_type;          <span class="emphasis"><em>// Allocator type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> allocator_type::value_type                             <a name="boost.log.attributes.basic_named_scope_list.value_type"></a>value_type;            
+  <span class="bold"><strong>typedef</strong></span> allocator_type::reference                              <a name="boost.log.attributes.basic_named_scope_list.reference"></a>reference;             
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_reference                        <a name="boost.log.attributes.basic_named_scope_list.const_reference"></a>const_reference;       
+  <span class="bold"><strong>typedef</strong></span> allocator_type::pointer                                <a name="boost.log.attributes.basic_named_scope_list.pointer"></a>pointer;               
+  <span class="bold"><strong>typedef</strong></span> allocator_type::const_pointer                          <a name="boost.log.attributes.basic_named_scope_list.const_pointer"></a>const_pointer;         
+  <span class="bold"><strong>typedef</strong></span> allocator_type::size_type                              <a name="boost.log.attributes.basic_named_scope_list.size_type"></a>size_type;             
+  <span class="bold"><strong>typedef</strong></span> allocator_type::difference_type                        <a name="boost.log.attributes.basic_named_scope_list.difference_type"></a>difference_type;       
+  <span class="bold"><strong>typedef</strong></span> implementation_defined <a href="basic_named_scope_list.html#boost.log.attributes.basic_named_scope_list.const_iterator">const_iterator</a>;
+  <span class="bold"><strong>typedef</strong></span> implementation_defined <a href="basic_named_scope_list.html#boost.log.attributes.basic_named_scope_list.iterator">iterator</a>;
+  <span class="bold"><strong>typedef</strong></span> implementation_defined <a href="basic_named_scope_list.html#boost.log.attributes.basic_named_scope_list.const_reverse_iterator">const_reverse_iterator</a>;
+  <span class="bold"><strong>typedef</strong></span> implementation_defined <a href="basic_named_scope_list.html#boost.log.attributes.basic_named_scope_list.reverse_iterator">reverse_iterator</a>;
+
+  <span class="emphasis"><em>// <a href="basic_named_scope_list.html#boost.log.attributes.basic_named_scope_listconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_named_scope_list.html#id274225-bb">basic_named_scope_list</a>();
+  <a href="basic_named_scope_list.html#id274238-bb">basic_named_scope_list</a>(<a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a> <span class="bold"><strong>const</strong></span> &amp;);
+  basic_named_scope_list&amp; <a href="basic_named_scope_list.html#id274264-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="basic_named_scope_list.html#id274259-bb">~basic_named_scope_list</a>();
+
+  <span class="emphasis"><em>// <a href="basic_named_scope_list.html#id274080-bb">public member functions</a></em></span>
+  <span class="type">const_iterator</span> <a href="basic_named_scope_list.html#id274084-bb">begin</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="basic_named_scope_list.html#id274099-bb">end</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reverse_iterator</span> <a href="basic_named_scope_list.html#id274114-bb">rbegin</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reverse_iterator</span> <a href="basic_named_scope_list.html#id274130-bb">rend</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">size_type</span> <a href="basic_named_scope_list.html#id274145-bb">size</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_named_scope_list.html#id274160-bb">empty</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_named_scope_list.html#id274175-bb">swap</a>(<a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a> &amp;) ;
+  <span class="type">const_reference</span> <a href="basic_named_scope_list.html#id274195-bb">back</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reference</span> <a href="basic_named_scope_list.html#id274210-bb">front</a>() <span class="bold"><strong>const</strong></span>;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id458323"></a><h2>Description</h2>
+<p>The scope list provides a read-only access to a doubly-linked list of scopes. </p>
+<div class="refsect2" lang="en">
+<a name="id458328"></a><h3>
+<a name="boost.log.attributes.basic_named_scope_listtypes"></a><code class="computeroutput">basic_named_scope_list</code> 
+        public
+       types</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<p>
+<span class="bold"><strong>typedef</strong></span> implementation_defined <a name="boost.log.attributes.basic_named_scope_list.const_iterator"></a>const_iterator;</p>
+<p>A constant iterator to the sequence of scopes. Complies to bidirectional iterator requirements. </p>
+</li>
+<li>
+<p>
+<span class="bold"><strong>typedef</strong></span> implementation_defined <a name="boost.log.attributes.basic_named_scope_list.iterator"></a>iterator;</p>
+<p>An iterator to the sequence of scopes. Complies to bidirectional iterator requirements. </p>
+</li>
+<li>
+<p>
+<span class="bold"><strong>typedef</strong></span> implementation_defined <a name="boost.log.attributes.basic_named_scope_list.const_reverse_iterator"></a>const_reverse_iterator;</p>
+<p>A constant reverse iterator to the sequence of scopes. Complies to bidirectional iterator requirements. </p>
+</li>
+<li>
+<p>
+<span class="bold"><strong>typedef</strong></span> implementation_defined <a name="boost.log.attributes.basic_named_scope_list.reverse_iterator"></a>reverse_iterator;</p>
+<p>A reverse iterator to the sequence of scopes. Complies to bidirectional iterator requirements. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id458424"></a><h3>
+<a name="boost.log.attributes.basic_named_scope_listconstruct-copy-destruct"></a><code class="computeroutput">basic_named_scope_list</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id274225-bb"></a>basic_named_scope_list();</pre>
+<p>Default constructor</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">empty() == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id274238-bb"></a>basic_named_scope_list(<a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">std::equal(begin(), end(), that.begin()) == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout">basic_named_scope_list&amp; <a name="id274264-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Assignment operator</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Postconditions:</span></td>
+<td><p><code class="computeroutput">std::equal(begin(), end(), that.begin()) == true</code> </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id274259-bb"></a>~basic_named_scope_list();</pre>
+<p>Destructor. Destroys the stored entries. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id458596"></a><h3>
+<a name="id274080-bb"></a><code class="computeroutput">basic_named_scope_list</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id274084-bb"></a>begin() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the first element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id274099-bb"></a>end() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the after-the-last element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reverse_iterator</span> <a name="id274114-bb"></a>rbegin() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the last element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reverse_iterator</span> <a name="id274130-bb"></a>rend() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Constant iterator to the before-the-first element of the container. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id274145-bb"></a>size() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The number of elements in the container </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id274160-bb"></a>empty() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>true if the container is empty and false otherwise </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id274175-bb"></a>swap(<a href="basic_named_scope_list.html" title="Class template basic_named_scope_list">basic_named_scope_list</a> &amp; that) ;</pre>
+<p>Swaps two instances of the container </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id274195-bb"></a>back() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>Last pushed scope entry </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id274210-bb"></a>front() <span class="bold"><strong>const</strong></span>;</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p>First pushed scope entry </p></td>
+</tr></tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_named_scope_entry.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../attributes.html#header.boost.log.attributes.named_scope_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_named_scope.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

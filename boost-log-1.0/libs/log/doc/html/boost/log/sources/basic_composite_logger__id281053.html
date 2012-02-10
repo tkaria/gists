@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_composite_logger&lt;CharT, FinalT, single_thread_model, FeaturesT&gt;</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp" title="Header &lt;boost/log/sources/basic_logger.hpp&gt;">
+<link rel="prev" href="basic_composite_logger.html" title="Class template basic_composite_logger">
+<link rel="next" href="swap_id281283.html" title="Function template swap">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_composite_logger.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="swap_id281283.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.sources.basic_composite_logger__id281053"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_composite_logger&lt;CharT, FinalT, single_thread_model, FeaturesT&gt;</span></h2>
+<p>boost::log::sources::basic_composite_logger&lt;CharT, FinalT, single_thread_model, FeaturesT&gt; &#8212; An optimized composite logger version with no multithreading support. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp" title="Header &lt;boost/log/sources/basic_logger.hpp&gt;">boost/log/sources/basic_logger.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> FinalT, <span class="bold"><strong>typename</strong></span> FeaturesT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_composite_logger__id281053.html" title="Class template basic_composite_logger&lt;CharT, FinalT, single_thread_model, FeaturesT&gt;">basic_composite_logger</a>&lt;CharT, FinalT, single_thread_model, FeaturesT&gt; {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::threading_model    <a name="boost.log.sources.basic_composite_logger__id281053.threading_model"></a>threading_model;   
+  <span class="bold"><strong>typedef</strong></span> base_type::attribute_set_type <a name="boost.log.sources.basic_composite_logger__id281053.attribute_set_type"></a>attribute_set_type;
+  <span class="bold"><strong>typedef</strong></span> base_type::string_type        <a name="boost.log.sources.basic_composite_logger__id281053.string_type"></a>string_type;       
+  <span class="bold"><strong>typedef</strong></span> base_type::record_type        <a name="boost.log.sources.basic_composite_logger__id281053.record_type"></a>record_type;       
+
+  <span class="emphasis"><em>// <a href="basic_composite_logger__id281053.html#boost.log.sources.basic_composite_logger__id281053construct-copy-destruct">construct/copy/destruct</a></em></span>
+  basic_composite_logger&amp; <a href="basic_composite_logger__id281053.html#id281276-bb"><span class="bold"><strong>operator</strong></span>=</a>(FinalT);
+
+  <span class="emphasis"><em>// <a href="basic_composite_logger__id281053.html#id281110-bb">public member functions</a></em></span>
+  <span class="type"></span> <a href="basic_composite_logger__id281053.html#id281113-bb">basic_composite_logger</a>() ;
+  <span class="type"></span> <a href="basic_composite_logger__id281053.html#id281120-bb">basic_composite_logger</a>(<a href="basic_composite_logger.html" title="Class template basic_composite_logger">basic_composite_logger</a> <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type"></span> <a href="basic_composite_logger__id281053.html#id281135-bb">basic_composite_logger</a>(ArgsT <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">std::pair&lt; <span class="bold"><strong>typename</strong></span> attribute_set_type::iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> 
+  <a href="basic_composite_logger__id281053.html#id281154-bb">add_attribute</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, shared_ptr&lt; attribute &gt; <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_composite_logger__id281053.html#id281174-bb">remove_attribute</a>(<span class="bold"><strong>typename</strong></span> attribute_set_type::iterator) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_composite_logger__id281053.html#id281188-bb">remove_all_attributes</a>() ;
+  <span class="type">attribute_set_type</span> <a href="basic_composite_logger__id281053.html#id281196-bb">get_attributes</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_composite_logger__id281053.html#id281204-bb">set_attributes</a>(attribute_set_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">record_type</span> <a href="basic_composite_logger__id281053.html#id281218-bb">open_record</a>() ;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type">record_type</span> <a href="basic_composite_logger__id281053.html#id281226-bb">open_record</a>(ArgsT <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_composite_logger__id281053.html#id281247-bb">push_record</a>(record_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_composite_logger__id281053.html#id281260-bb">swap</a>(<a href="basic_composite_logger.html" title="Class template basic_composite_logger">basic_composite_logger</a> &amp;) ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id480922"></a><h2>Description</h2>
+<div class="refsect2" lang="en">
+<a name="id480926"></a><h3>
+<a name="boost.log.sources.basic_composite_logger__id281053construct-copy-destruct"></a><code class="computeroutput">basic_composite_logger</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1"><li><pre class="literallayout">basic_composite_logger&amp; <a name="id281276-bb"></a><span class="bold"><strong>operator</strong></span>=(FinalT that);</pre></li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id480966"></a><h3>
+<a name="id281110-bb"></a><code class="computeroutput">basic_composite_logger</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li><pre class="literallayout"><span class="type"></span> <a name="id281113-bb"></a>basic_composite_logger() ;</pre></li>
+<li><pre class="literallayout"><span class="type"></span> <a name="id281120-bb"></a>basic_composite_logger(<a href="basic_composite_logger.html" title="Class template basic_composite_logger">basic_composite_logger</a> <span class="bold"><strong>const</strong></span> &amp; that) ;</pre></li>
+<li><pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type"></span> <a name="id281135-bb"></a>basic_composite_logger(ArgsT <span class="bold"><strong>const</strong></span> &amp; args) ;</pre></li>
+<li><pre class="literallayout"><span class="type">std::pair&lt; <span class="bold"><strong>typename</strong></span> attribute_set_type::iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> 
+<a name="id281154-bb"></a>add_attribute(string_type <span class="bold"><strong>const</strong></span> &amp; name, shared_ptr&lt; attribute &gt; <span class="bold"><strong>const</strong></span> &amp; attr) ;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id281174-bb"></a>remove_attribute(<span class="bold"><strong>typename</strong></span> attribute_set_type::iterator it) ;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id281188-bb"></a>remove_all_attributes() ;</pre></li>
+<li><pre class="literallayout"><span class="type">attribute_set_type</span> <a name="id281196-bb"></a>get_attributes() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id281204-bb"></a>set_attributes(attribute_set_type <span class="bold"><strong>const</strong></span> &amp; attrs) ;</pre></li>
+<li><pre class="literallayout"><span class="type">record_type</span> <a name="id281218-bb"></a>open_record() ;</pre></li>
+<li><pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type">record_type</span> <a name="id281226-bb"></a>open_record(ArgsT <span class="bold"><strong>const</strong></span> &amp; args) ;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id281247-bb"></a>push_record(record_type <span class="bold"><strong>const</strong></span> &amp; record) ;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id281260-bb"></a>swap(<a href="basic_composite_logger.html" title="Class template basic_composite_logger">basic_composite_logger</a> &amp; that) ;</pre></li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_composite_logger.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="swap_id281283.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

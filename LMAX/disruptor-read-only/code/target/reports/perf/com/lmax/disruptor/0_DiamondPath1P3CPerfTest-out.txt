@@ -1,0 +1,4 @@
+DiamondPath1P3CPerfTest OpsPerSecond run 0: BlockingQueues=785832, Disruptor=6730743
+DiamondPath1P3CPerfTest OpsPerSecond run 1: BlockingQueues=773519, Disruptor=6014458
+DiamondPath1P3CPerfTest OpsPerSecond run 2: BlockingQueues=768372, Disruptor=6079766
+

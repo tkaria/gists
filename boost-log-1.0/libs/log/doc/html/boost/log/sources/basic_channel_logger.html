@@ -1,0 +1,162 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_channel_logger</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../logging_sources.html#header.boost.log.sources.channel_feature_hpp" title="Header &lt;boost/log/sources/channel_feature.hpp&gt;">
+<link rel="prev" href="../../../BOOST_LOG_DECLARE_LOGGER_TYPE.html" title="Macro BOOST_LOG_DECLARE_LOGGER_TYPE">
+<link rel="next" href="channel.html" title="Struct template channel">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../BOOST_LOG_DECLARE_LOGGER_TYPE.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.channel_feature_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="channel.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.sources.basic_channel_logger"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_channel_logger</span></h2>
+<p>boost::log::sources::basic_channel_logger &#8212; Channel feature implementation. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../logging_sources.html#header.boost.log.sources.channel_feature_hpp" title="Header &lt;boost/log/sources/channel_feature.hpp&gt;">boost/log/sources/channel_feature.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BaseT, <span class="bold"><strong>typename</strong></span> ChannelT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_channel_logger.html" title="Class template basic_channel_logger">basic_channel_logger</a> {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::char_type                 <a name="boost.log.sources.basic_channel_logger.char_type"></a>char_type;           <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::final_type                <a name="boost.log.sources.basic_channel_logger.final_type"></a>final_type;          <span class="emphasis"><em>// Final type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::attribute_set_type        <a name="boost.log.sources.basic_channel_logger.attribute_set_type"></a>attribute_set_type;  <span class="emphasis"><em>// Attribute set type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::string_type               <a name="boost.log.sources.basic_channel_logger.string_type"></a>string_type;         <span class="emphasis"><em>// String type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::threading_model           <a name="boost.log.sources.basic_channel_logger.threading_model"></a>threading_model;     <span class="emphasis"><em>// Threading model being used. </em></span>
+  <span class="bold"><strong>typedef</strong></span> ChannelT                             <a name="boost.log.sources.basic_channel_logger.channel_type"></a>channel_type;        <span class="emphasis"><em>// Channel type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> attributes::constant&lt; channel_type &gt; <a name="boost.log.sources.basic_channel_logger.channel_attribute"></a>channel_attribute;   <span class="emphasis"><em>// Channel attribute type. </em></span>
+
+  <span class="emphasis"><em>// <a href="basic_channel_logger.html#boost.log.sources.basic_channel_loggerconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_channel_logger.html#id281536-bb">basic_channel_logger</a>();
+  <a href="basic_channel_logger.html#id281542-bb">basic_channel_logger</a>(<a href="basic_channel_logger.html" title="Class template basic_channel_logger">basic_channel_logger</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <a href="basic_channel_logger.html#id281554-bb">basic_channel_logger</a>(ArgsT <span class="bold"><strong>const</strong></span> &amp;);
+
+  <span class="emphasis"><em>// <a href="basic_channel_logger.html#id281485-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_channel_logger.html#id281489-bb">has_channel</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">channel_type <span class="bold"><strong>const</strong></span> &amp;</span> <a href="basic_channel_logger.html#id281513-bb">channel</a>() <span class="bold"><strong>const</strong></span>;
+
+  <span class="emphasis"><em>// <a href="basic_channel_logger.html#id281590-bb">protected member functions</a></em></span>
+  <span class="type">shared_ptr&lt; channel_attribute &gt; <span class="bold"><strong>const</strong></span> &amp;</span> <a href="basic_channel_logger.html#id281593-bb">get_channel_attribute</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_channel_logger.html#id281605-bb">swap_unlocked</a>(<a href="basic_channel_logger.html" title="Class template basic_channel_logger">basic_channel_logger</a> &amp;) ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id482044"></a><h2>Description</h2>
+<div class="refsect2" lang="en">
+<a name="id482048"></a><h3>
+<a name="boost.log.sources.basic_channel_loggerconstruct-copy-destruct"></a><code class="computeroutput">basic_channel_logger</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id281536-bb"></a>basic_channel_logger();</pre>
+<p>Default constructor. The constructed logger does not have the channel attribute. </p>
+</li>
+<li>
+<pre class="literallayout"><a name="id281542-bb"></a>basic_channel_logger(<a href="basic_channel_logger.html" title="Class template basic_channel_logger">basic_channel_logger</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor </p>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <a name="id281554-bb"></a>basic_channel_logger(ArgsT <span class="bold"><strong>const</strong></span> &amp; args);</pre>
+<p>Constructor with arguments. Allows to register a channel name attribute on construction.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">args</code></span></td>
+<td>
+<p>A set of named arguments. The following arguments are supported: </p>
+<div class="itemizedlist"><ul type="disc"><li><p><code class="computeroutput">channel</code> - a string that represents the channel name </p></li></ul></div>
+<p>
+</p>
+</td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id482189"></a><h3>
+<a name="id281485-bb"></a><code class="computeroutput">basic_channel_logger</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id281489-bb"></a>has_channel() <span class="bold"><strong>const</strong></span>;</pre>
+<p>The observer of the channel attribute presence</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Returns:</span></td>
+<td><p><code class="computeroutput">true</code> if the channel attribute is set by the logger, <code class="computeroutput">false</code> otherwise </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">channel_type <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id281513-bb"></a>channel() <span class="bold"><strong>const</strong></span>;</pre>
+<p>The observer of the channel name</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Requires:</span></td>
+<td><p><code class="computeroutput">this-&gt;has_channel() == true</code> </p></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>The channel name that was set by the logger </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id482319"></a><h3>
+<a name="id281590-bb"></a><code class="computeroutput">basic_channel_logger</code> protected member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type">shared_ptr&lt; channel_attribute &gt; <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id281593-bb"></a>get_channel_attribute() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Channel attribute accessor </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id281605-bb"></a>swap_unlocked(<a href="basic_channel_logger.html" title="Class template basic_channel_logger">basic_channel_logger</a> &amp; that) ;</pre>
+<p>Unlocked swap </p>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../BOOST_LOG_DECLARE_LOGGER_TYPE.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.channel_feature_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="channel.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

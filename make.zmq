@@ -1,0 +1,71 @@
+#
+#
+#
+#
+#
+
+all: zmqsvr zmqcli zmqsvr2 zmqcli2 zmqsvr2c zmqcli2c
+
+c: zmqsvr2c zmqcli2c
+
+v3: zmqcli3 zmqsvr3
+
+CFLAGS= -O3 -Wall
+
+# Server
+zmqsvr: zmqsvr.o
+	g++ -o zmqsvr zmqsvr.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqsvr.o: zmqsvr.cpp
+	g++ $(CFLAGS) zmqsvr.cpp -c 
+
+zmqsvr2: zmqsvr2.o
+	g++ -o zmqsvr2 zmqsvr2.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqsvr2.o: zmqsvr2.cpp
+	g++ $(CFLAGS) zmqsvr2.cpp -c 
+
+zmqsvr2c: zmqsvr2c.o
+	gcc -o zmqsvr2c zmqsvr2c.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqsvr2c.o: zmqsvr2c.c
+	gcc $(CFLAGS) zmqsvr2c.c -c 
+
+zmqsvr3: zmqsvr3.o
+	g++ -o zmqsvr3 zmqsvr3.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqsvr3.o: zmqsvr3.cpp
+	g++ $(CFLAGS) zmqsvr3.cpp -c 
+
+
+
+
+# Client
+zmqcli: zmqcli.o
+	g++ -o zmqcli zmqcli.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqcli.o: zmqcli.cpp
+	g++ $(CFLAGS) zmqcli.cpp -c 
+
+zmqcli2: zmqcli2.o
+	g++ -o zmqcli2 zmqcli2.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqcli2.o: zmqcli2.cpp
+	g++ $(CFLAGS) zmqcli2.cpp -c 
+
+zmqcli2c: zmqcli2c.o
+	gcc -o zmqcli2c zmqcli2c.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqcli2c.o: zmqcli2c.c
+	gcc $(CFLAGS) zmqcli2c.c -c -I$(ZMQ_ROOT)/include 
+
+zmqcli3: zmqcli3.o
+	g++ -o zmqcli3 zmqcli3.o -L$(ZMQ_ROOT)/lib  -l zmq
+
+zmqcli3.o: zmqcli3.cpp
+	g++ $(CFLAGS) zmqcli3.cpp -c 
+
+
+# Next to Godliness
+clean:
+	rm -f zmqcli.o zmqcli zmqsvr.o zmqsvr zmqcli2.o zmqcli2 zmqsvr2.o zmqsvr2 zmqcli2c.o zmqcli2c zmqsvr2c.o zmqsvr2c zmqcli3.0 zmqcli3 zmqsvr3.o zmqsvr3

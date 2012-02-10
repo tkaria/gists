@@ -1,0 +1,205 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_logger</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp" title="Header &lt;boost/log/sources/basic_logger.hpp&gt;">
+<link rel="prev" href="../../../logging_sources.html" title="Logging sources">
+<link rel="next" href="basic_composite_logger.html" title="Class template basic_composite_logger">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../logging_sources.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_composite_logger.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.sources.basic_logger"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_logger</span></h2>
+<p>boost::log::sources::basic_logger &#8212; Basic logger class. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp" title="Header &lt;boost/log/sources/basic_logger.hpp&gt;">boost/log/sources/basic_logger.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> FinalT, <span class="bold"><strong>typename</strong></span> ThreadingModelT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_logger.html" title="Class template basic_logger">basic_logger</a> {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> CharT                            <a name="boost.log.sources.basic_logger.char_type"></a>char_type;           <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> FinalT                           <a name="boost.log.sources.basic_logger.final_type"></a>final_type;          <span class="emphasis"><em>// Final logger type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> std::basic_string&lt; char_type &gt;   <a name="boost.log.sources.basic_logger.string_type"></a>string_type;         <span class="emphasis"><em>// String type to be used as a message text holder. </em></span>
+  <span class="bold"><strong>typedef</strong></span> basic_attribute_set&lt; char_type &gt; <a name="boost.log.sources.basic_logger.attribute_set_type"></a>attribute_set_type;  <span class="emphasis"><em>// Attribute set type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> basic_core&lt; char_type &gt;          <a name="boost.log.sources.basic_logger.core_type"></a>core_type;           <span class="emphasis"><em>// Logging system core type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> basic_record&lt; char_type &gt;        <a name="boost.log.sources.basic_logger.record_type"></a>record_type;         <span class="emphasis"><em>// Logging record type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> ThreadingModelT                  <a name="boost.log.sources.basic_logger.threading_model"></a>threading_model;     <span class="emphasis"><em>// Threading model type. </em></span>
+
+  <span class="emphasis"><em>// <a href="basic_logger.html#boost.log.sources.basic_loggerconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_logger.html#id270035-bb">basic_logger</a>();
+  <a href="basic_logger.html#id270041-bb">basic_logger</a>(<a href="basic_logger.html" title="Class template basic_logger">basic_logger</a> <span class="bold"><strong>const</strong></span> &amp;);
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <a href="basic_logger.html#id270063-bb">basic_logger</a>(ArgsT <span class="bold"><strong>const</strong></span> &amp;);
+  basic_logger&amp; <a href="basic_logger.html#id280684-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="basic_logger.html" title="Class template basic_logger">basic_logger</a> <span class="bold"><strong>const</strong></span> &amp;);
+
+  <span class="emphasis"><em>// <a href="basic_logger.html#id270081-bb">protected member functions</a></em></span>
+  <span class="type">shared_ptr&lt; core_type &gt; <span class="bold"><strong>const</strong></span> &amp;</span> <a href="basic_logger.html#id270085-bb">core</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">attribute_set_type &amp;</span> <a href="basic_logger.html#id270096-bb">attributes</a>() ;
+  <span class="type">attribute_set_type <span class="bold"><strong>const</strong></span> &amp;</span> <a href="basic_logger.html#id270108-bb">attributes</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">threading_model &amp;</span> <a href="basic_logger.html#id270119-bb">get_threading_model</a>() ;
+  <span class="type">threading_model <span class="bold"><strong>const</strong></span> &amp;</span> <a href="basic_logger.html#id270131-bb">get_threading_model</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">final_type *</span> <a href="basic_logger.html#id270142-bb">final_this</a>() ;
+  <span class="type">final_type <span class="bold"><strong>const</strong></span> *</span> <a href="basic_logger.html#id270153-bb">final_this</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_logger.html#id280495-bb">swap_unlocked</a>(<a href="basic_logger.html" title="Class template basic_logger">basic_logger</a> &amp;) ;
+  <span class="type">std::pair&lt; <span class="bold"><strong>typename</strong></span> attribute_set_type::iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> 
+  <a href="basic_logger.html#id280517-bb">add_attribute_unlocked</a>(string_type <span class="bold"><strong>const</strong></span> &amp;, shared_ptr&lt; attribute &gt; <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_logger.html#id280544-bb">remove_attribute_unlocked</a>(<span class="bold"><strong>typename</strong></span> attribute_set_type::iterator) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_logger.html#id280565-bb">remove_all_attributes_unlocked</a>() ;
+  <span class="type">record_type</span> <a href="basic_logger.html#id280580-bb">open_record_unlocked</a>() ;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type">record_type</span> <a href="basic_logger.html#id280596-bb">open_record_unlocked</a>(ArgsT <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_logger.html#id280624-bb">push_record_unlocked</a>(record_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type">attribute_set_type</span> <a href="basic_logger.html#id280644-bb">get_attributes_unlocked</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_logger.html#id280660-bb">set_attributes_unlocked</a>(attribute_set_type <span class="bold"><strong>const</strong></span> &amp;) ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id478587"></a><h2>Description</h2>
+<p>The <code class="computeroutput">basic_logger</code> class template serves as a base class for all loggers provided by the library. It can also be used as a base for user-defined loggers. The template parameters are:</p>
+<div class="itemizedlist"><ul type="disc">
+<li><p><code class="computeroutput">CharT</code> - logging character type </p></li>
+<li><p><code class="computeroutput">FinalT</code> - final type of the logger that eventually derives from the <code class="computeroutput">basic_logger</code>. There may be other classes in the hierarchy between the final class and <code class="computeroutput">basic_logger</code>. </p></li>
+<li><p><code class="computeroutput">ThreadingModelT</code> - threading model policy. Must provide methods of the Boost.Thread locking concept used in <code class="computeroutput">basic_logger</code> class and all its derivatives in the hierarchy up to the <code class="computeroutput">FinalT</code> class. The <code class="computeroutput">basic_logger</code> class itself requires methods of the SharedLockable concept. The threading model policy must also be default and copy-constructible and support member function <code class="computeroutput">swap</code>. There are currently two policies provided: <code class="computeroutput">single_thread_model</code> and <code class="computeroutput">multi_thread_model</code>.</p></li>
+</ul></div>
+<p>
+The logger implements fundamental facilities of loggers, such as storing source-specific attribute set and formatting log record messages. The basic logger interacts with the logging core in order to apply filtering and pass records to sinks. </p>
+<div class="refsect2" lang="en">
+<a name="id478685"></a><h3>
+<a name="boost.log.sources.basic_loggerconstruct-copy-destruct"></a><code class="computeroutput">basic_logger</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id270035-bb"></a>basic_logger();</pre>
+<p>Constructor. Initializes internal data structures of the basic logger class, acquires reference to the logging core. </p>
+</li>
+<li>
+<pre class="literallayout"><a name="id270041-bb"></a>basic_logger(<a href="basic_logger.html" title="Class template basic_logger">basic_logger</a> <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor. Copies all attributes from the source logger.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>Source logger </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Notes:</span></td>
+<td><p>Not thread-safe. The source logger must be locked in the final class before copying.</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <a name="id270063-bb"></a>basic_logger(ArgsT <span class="bold"><strong>const</strong></span> &amp;);</pre>
+<p>Constructor with named arguments. The constructor ignores all arguments. The result of construction is equivalent to default construction. </p>
+</li>
+<li>
+<pre class="literallayout">basic_logger&amp; <a name="id280684-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="basic_logger.html" title="Class template basic_logger">basic_logger</a> <span class="bold"><strong>const</strong></span> &amp;);</pre>Assignment (should be implemented through copy and swap in the final class). </li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id478854"></a><h3>
+<a name="id270081-bb"></a><code class="computeroutput">basic_logger</code> protected member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type">shared_ptr&lt; core_type &gt; <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id270085-bb"></a>core() <span class="bold"><strong>const</strong></span>;</pre>
+<p>An accessor to the logging system pointer </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">attribute_set_type &amp;</span> <a name="id270096-bb"></a>attributes() ;</pre>
+<p>An accessor to the logger attributes </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">attribute_set_type <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id270108-bb"></a>attributes() <span class="bold"><strong>const</strong></span>;</pre>
+<p>An accessor to the logger attributes </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">threading_model &amp;</span> <a name="id270119-bb"></a>get_threading_model() ;</pre>
+<p>An accessor to the threading model base </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">threading_model <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id270131-bb"></a>get_threading_model() <span class="bold"><strong>const</strong></span>;</pre>
+<p>An accessor to the threading model base </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">final_type *</span> <a name="id270142-bb"></a>final_this() ;</pre>
+<p>An accessor to the final logger </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">final_type <span class="bold"><strong>const</strong></span> *</span> <a name="id270153-bb"></a>final_this() <span class="bold"><strong>const</strong></span>;</pre>
+<p>An accessor to the final logger </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id280495-bb"></a>swap_unlocked(<a href="basic_logger.html" title="Class template basic_logger">basic_logger</a> &amp; that) ;</pre>
+<p>Unlocked <code class="computeroutput">swap</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">std::pair&lt; <span class="bold"><strong>typename</strong></span> attribute_set_type::iterator, <span class="bold"><strong>bool</strong></span> &gt;</span> 
+<a name="id280517-bb"></a>add_attribute_unlocked(string_type <span class="bold"><strong>const</strong></span> &amp; name, 
+                       shared_ptr&lt; attribute &gt; <span class="bold"><strong>const</strong></span> &amp; attr) ;</pre>
+<p>Unlocked <code class="computeroutput">add_attribute</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id280544-bb"></a>remove_attribute_unlocked(<span class="bold"><strong>typename</strong></span> attribute_set_type::iterator it) ;</pre>
+<p>Unlocked <code class="computeroutput">remove_attribute</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id280565-bb"></a>remove_all_attributes_unlocked() ;</pre>
+<p>Unlocked <code class="computeroutput">remove_all_attributes</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">record_type</span> <a name="id280580-bb"></a>open_record_unlocked() ;</pre>
+<p>Unlocked <code class="computeroutput">open_record</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ArgsT&gt; <span class="type">record_type</span> <a name="id280596-bb"></a>open_record_unlocked(ArgsT <span class="bold"><strong>const</strong></span> &amp; args) ;</pre>
+<p>Unlocked <code class="computeroutput">open_record</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id280624-bb"></a>push_record_unlocked(record_type <span class="bold"><strong>const</strong></span> &amp; record) ;</pre>
+<p>Unlocked <code class="computeroutput">push_record</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">attribute_set_type</span> <a name="id280644-bb"></a>get_attributes_unlocked() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Unlocked <code class="computeroutput">get_attributes</code> </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id280660-bb"></a>set_attributes_unlocked(attribute_set_type <span class="bold"><strong>const</strong></span> &amp; attrs) ;</pre>
+<p>Unlocked <code class="computeroutput">set_attributes</code> </p>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../logging_sources.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../logging_sources.html#header.boost.log.sources.basic_logger_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_composite_logger.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

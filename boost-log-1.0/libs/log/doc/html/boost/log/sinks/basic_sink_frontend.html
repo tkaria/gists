@@ -1,0 +1,125 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template basic_sink_frontend</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../sinks.html#header.boost.log.sinks.basic_sink_frontend_hpp" title="Header &lt;boost/log/sinks/basic_sink_frontend.hpp&gt;">
+<link rel="prev" href="basic_formatting_sink_b_id287107.html" title="Class template basic_formatting_sink_backend">
+<link rel="next" href="basic_debug_output_backend.html" title="Class template basic_debug_output_backend">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_formatting_sink_b_id287107.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../sinks.html#header.boost.log.sinks.basic_sink_frontend_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_debug_output_backend.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.sinks.basic_sink_frontend"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template basic_sink_frontend</span></h2>
+<p>boost::log::sinks::basic_sink_frontend &#8212; A base class for a logging sink frontend. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../sinks.html#header.boost.log.sinks.basic_sink_frontend_hpp" title="Header &lt;boost/log/sinks/basic_sink_frontend.hpp&gt;">boost/log/sinks/basic_sink_frontend.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="basic_sink_frontend.html" title="Class template basic_sink_frontend">basic_sink_frontend</a> : <span class="bold"><strong>public</strong></span> boost::log::sinks::sink&lt; CharT &gt; {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::char_type                        <a name="boost.log.sinks.basic_sink_frontend.char_type"></a>char_type;               <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::string_type                      <a name="boost.log.sinks.basic_sink_frontend.string_type"></a>string_type;             <span class="emphasis"><em>// String type to be used as a message text holder. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::record_type                      <a name="boost.log.sinks.basic_sink_frontend.record_type"></a>record_type;             <span class="emphasis"><em>// Log record type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::values_view_type                 <a name="boost.log.sinks.basic_sink_frontend.values_view_type"></a>values_view_type;        <span class="emphasis"><em>// Attribute values view type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> function1&lt; <span class="bold"><strong>bool</strong></span>, values_view_type <span class="bold"><strong>const</strong></span> &amp; &gt; <a name="boost.log.sinks.basic_sink_frontend.filter_type"></a>filter_type;             <span class="emphasis"><em>// Filter function type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> function0&lt; <span class="bold"><strong>void</strong></span> &gt;                           <a name="boost.log.sinks.basic_sink_frontend.exception_handler_type"></a>exception_handler_type;  <span class="emphasis"><em>// An exception handler type. </em></span>
+
+  <span class="emphasis"><em>// <a href="basic_sink_frontend.html#boost.log.sinks.basic_sink_frontendconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="basic_sink_frontend.html#id287528-bb">basic_sink_frontend</a>(implementation *);
+  <a href="basic_sink_frontend.html#id287615-bb">~basic_sink_frontend</a>();
+
+  <span class="emphasis"><em>// <a href="basic_sink_frontend.html#id287506-bb">protected member functions</a></em></span>
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type">BOOST_LOG_FORCEINLINE T *</span> <a href="basic_sink_frontend.html#id287510-bb">get_impl</a>() <span class="bold"><strong>const</strong></span>;
+
+  <span class="emphasis"><em>// <a href="basic_sink_frontend.html#id287537-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_sink_frontend.html#id287541-bb">set_filter</a>(filter_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_sink_frontend.html#id287558-bb">reset_filter</a>() ;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="basic_sink_frontend.html#id287570-bb">set_exception_handler</a>(exception_handler_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="basic_sink_frontend.html#id287587-bb">will_consume</a>(values_view_type <span class="bold"><strong>const</strong></span> &amp;) ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id497704"></a><h2>Description</h2>
+<div class="refsect2" lang="en">
+<a name="id497708"></a><h3>
+<a name="boost.log.sinks.basic_sink_frontendconstruct-copy-destruct"></a><code class="computeroutput">basic_sink_frontend</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id287528-bb"></a>basic_sink_frontend(implementation * p);</pre>The constructor installs the pointer to the frontend implementation. </li>
+<li>
+<pre class="literallayout"><a name="id287615-bb"></a>~basic_sink_frontend();</pre>
+<p>Destructor </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id497757"></a><h3>
+<a name="id287506-bb"></a><code class="computeroutput">basic_sink_frontend</code> protected member functions</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="type">BOOST_LOG_FORCEINLINE T *</span> <a name="id287510-bb"></a>get_impl() <span class="bold"><strong>const</strong></span>;</pre>Returns pointer to the frontend implementation data. </li></ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id497811"></a><h3>
+<a name="id287537-bb"></a><code class="computeroutput">basic_sink_frontend</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id287541-bb"></a>set_filter(filter_type <span class="bold"><strong>const</strong></span> &amp; filter) ;</pre>
+<p>The method sets sink-specific filter functional object </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id287558-bb"></a>reset_filter() ;</pre>
+<p>The method resets the filter </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id287570-bb"></a>set_exception_handler(exception_handler_type <span class="bold"><strong>const</strong></span> &amp; handler) ;</pre>
+<p>The method sets an exception handler function </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id287587-bb"></a>will_consume(values_view_type <span class="bold"><strong>const</strong></span> &amp; attributes) ;</pre>
+<p>The method returns <code class="computeroutput">true</code> if no filter is set or the attribute values pass the filter</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">attributes</code></span></td>
+<td><p>A set of attribute values of a logging record </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_formatting_sink_b_id287107.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../sinks.html#header.boost.log.sinks.basic_sink_frontend_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="basic_debug_output_backend.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

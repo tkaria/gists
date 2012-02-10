@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/timir/capitalk/timir/g2log/g2log/src/active.cpp
+active.h
+/home/timir/capitalk/timir/g2log/g2log/src/active.h
+cassert
+-
+
+/home/timir/capitalk/timir/g2log/g2log/src/active.h
+thread
+-
+functional
+-
+condition_variable
+-
+mutex
+-
+memory
+-
+shared_queue.h
+/home/timir/capitalk/timir/g2log/g2log/src/shared_queue.h
+
+/home/timir/capitalk/timir/g2log/g2log/src/shared_queue.h
+queue
+-
+mutex
+-
+exception
+-
+condition_variable
+-
+

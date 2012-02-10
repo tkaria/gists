@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template fmt_c_ascii_decorator</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../formatters.html#header.boost.log.formatters.c_decorator_hpp" title="Header &lt;boost/log/formatters/c_decorator.hpp&gt;">
+<link rel="prev" href="basic_formatter.html" title="Struct template basic_formatter">
+<link rel="next" href="c_dec.html" title="Global c_dec">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_formatter.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../formatters.html#header.boost.log.formatters.c_decorator_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="c_dec.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.formatters.fmt_c_ascii_decorator"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template fmt_c_ascii_decorator</span></h2>
+<p>boost::log::formatters::fmt_c_ascii_decorator</p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../formatters.html#header.boost.log.formatters.c_decorator_hpp" title="Header &lt;boost/log/formatters/c_decorator.hpp&gt;">boost/log/formatters/c_decorator.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> FormatterT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="fmt_c_ascii_decorator.html" title="Class template fmt_c_ascii_decorator">fmt_c_ascii_decorator</a> : <span class="bold"><strong>public</strong></span> basic_formatter&lt; FormatterT::char_type, fmt_c_ascii_decorator&lt; FormatterT &gt; &gt;
+{
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::char_type    <a name="boost.log.formatters.fmt_c_ascii_decorator.char_type"></a>char_type;       <span class="emphasis"><em>// Character type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> FormatterT              <a name="boost.log.formatters.fmt_c_ascii_decorator.formatter_type"></a>formatter_type;  <span class="emphasis"><em>// Decorated formatter type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::string_type  <a name="boost.log.formatters.fmt_c_ascii_decorator.string_type"></a>string_type;     <span class="emphasis"><em>// String type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::ostream_type <a name="boost.log.formatters.fmt_c_ascii_decorator.ostream_type"></a>ostream_type;    <span class="emphasis"><em>// Stream type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::record_type  <a name="boost.log.formatters.fmt_c_ascii_decorator.record_type"></a>record_type;     <span class="emphasis"><em>// Log record type. </em></span>
+
+  <span class="emphasis"><em>// <a href="fmt_c_ascii_decorator.html#boost.log.formatters.fmt_c_ascii_decoratorconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="fmt_c_ascii_decorator.html#id276420-bb">fmt_c_ascii_decorator</a>(formatter_type <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="fmt_c_ascii_decorator.html#id276431-bb">fmt_c_ascii_decorator</a>(fmt_c_ascii_decorator <span class="bold"><strong>const</strong></span> &amp;);
+  fmt_c_ascii_decorator&amp; <a href="fmt_c_ascii_decorator.html#id276444-bb"><span class="bold"><strong>operator</strong></span>=</a>(fmt_c_ascii_decorator <span class="bold"><strong>const</strong></span> &amp;);
+
+  <span class="emphasis"><em>// <a href="fmt_c_ascii_decorator.html#id276383-bb">public member functions</a></em></span>
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="fmt_c_ascii_decorator.html#id276386-bb"><span class="bold"><strong>operator</strong></span>()</a>(ostream_type &amp;, record_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id467245"></a><h2>Description</h2>
+<div class="refsect2" lang="en">
+<a name="id467248"></a><h3>
+<a name="boost.log.formatters.fmt_c_ascii_decoratorconstruct-copy-destruct"></a><code class="computeroutput">fmt_c_ascii_decorator</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id276420-bb"></a>fmt_c_ascii_decorator(formatter_type <span class="bold"><strong>const</strong></span> &amp; fmt);</pre>
+<p>Initializing constructor </p>
+</li>
+<li>
+<pre class="literallayout"><a name="id276431-bb"></a>fmt_c_ascii_decorator(fmt_c_ascii_decorator <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>Copy constructor </p>
+</li>
+<li>
+<pre class="literallayout">fmt_c_ascii_decorator&amp; <a name="id276444-bb"></a><span class="bold"><strong>operator</strong></span>=(fmt_c_ascii_decorator <span class="bold"><strong>const</strong></span> &amp;);</pre>Assignment is closed. </li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id467340"></a><h3>
+<a name="id276383-bb"></a><code class="computeroutput">fmt_c_ascii_decorator</code> public member functions</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id276386-bb"></a><span class="bold"><strong>operator</strong></span>()(ostream_type &amp; strm, record_type <span class="bold"><strong>const</strong></span> &amp; record) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Formatting operator. Invokes the decorated formatter, then sequentially applies all decorations to the output. The resulting string is the output of the decorator.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><code class="computeroutput">record</code></span></td>
+<td><p>A logging record </p></td>
+</tr>
+<tr>
+<td><span class="term"><code class="computeroutput">strm</code></span></td>
+<td><p>A reference to the stream, where the final text of the logging record is composed </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="basic_formatter.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../formatters.html#header.boost.log.formatters.c_decorator_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="c_dec.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

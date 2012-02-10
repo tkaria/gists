@@ -1,0 +1,554 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Utilities</title>
+<link rel="stylesheet" href="../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="log/reference.html" title="Reference">
+<link rel="prev" href="boost/log/sinks/unlocked_sink.html" title="Class template unlocked_sink">
+<link rel="next" href="boost/log/attribute_value_extractor.html" title="Class template attribute_value_extractor">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td><td valign="bottom" halign="right"><a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=199644&amp;type=5" width="210" height="62" border="0" alt="SourceForge.net Logo" /></a></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="boost/log/sinks/unlocked_sink.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="log/reference.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="boost/log/attribute_value_extractor.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="utilities"></a>Utilities</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.attribute_value_extractor_hpp">Header &lt;boost/log/utility/attribute_value_extractor.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.empty_deleter_hpp">Header &lt;boost/log/utility/empty_deleter.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.exception_handler_hpp">Header &lt;boost/log/utility/exception_handler.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.init.common_attributes_hpp">Header &lt;boost/log/utility/init/common_attributes.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.init.filter_parser_hpp">Header &lt;boost/log/utility/init/filter_parser.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.init.formatter_parser_hpp">Header &lt;boost/log/utility/init/formatter_parser.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.init.from_settings_hpp">Header &lt;boost/log/utility/init/from_settings.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.init.from_stream_hpp">Header &lt;boost/log/utility/init/from_stream.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.init.to_console_hpp">Header &lt;boost/log/utility/init/to_console.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.init.to_file_hpp">Header &lt;boost/log/utility/init/to_file.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.intrusive_ref_counter_hpp">Header &lt;boost/log/utility/intrusive_ref_counter.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.no_unused_warnings_hpp">Header &lt;boost/log/utility/no_unused_warnings.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.record_ordering_hpp">Header &lt;boost/log/utility/record_ordering.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.scoped_attribute_hpp">Header &lt;boost/log/utility/scoped_attribute.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.slim_string_hpp">Header &lt;boost/log/utility/slim_string.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.string_literal_hpp">Header &lt;boost/log/utility/string_literal.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.type_dispatch.date_time_types_hpp">Header &lt;boost/log/utility/type_dispatch/date_time_types.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.type_dispatch.dynamic_type_dispatcher_hpp">Header &lt;boost/log/utility/type_dispatch/dynamic_type_dispatcher.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.type_dispatch.standard_types_hpp">Header &lt;boost/log/utility/type_dispatch/standard_types.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.type_dispatch.static_type_dispatcher_hpp">Header &lt;boost/log/utility/type_dispatch/static_type_dispatcher.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.type_dispatch.type_dispatcher_hpp">Header &lt;boost/log/utility/type_dispatch/type_dispatcher.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.type_info_wrapper_hpp">Header &lt;boost/log/utility/type_info_wrapper.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="utilities.html#header.boost.log.utility.unique_identifier_name_hpp">Header &lt;boost/log/utility/unique_identifier_name.hpp&gt;</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.attribute_value_extractor_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/attribute_value_extractor.hpp" target="_top">boost/log/utility/attribute_value_extractor.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>01.03.2008</p>
+<p>
+The header contains implementation of convenience tools to extract an attribute value into a user-defined functor. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> T&gt; <span class="bold"><strong>class</strong></span> <a href="boost/log/attribute_value_extractor.html" title="Class template attribute_value_extractor">attribute_value_extractor</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T, <span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> ReceiverT&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="boost/log/extract_id268149.html" title="Function template extract">extract</a>(<span class="bold"><strong>const</strong></span> CharT *, 
+                   basic_attribute_values_view&lt; CharT &gt; <span class="bold"><strong>const</strong></span> &amp;, ReceiverT);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T, <span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> ReceiverT&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="boost/log/extract_id266871.html" title="Function template extract">extract</a>(std::basic_string&lt; CharT &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                   basic_attribute_values_view&lt; CharT &gt; <span class="bold"><strong>const</strong></span> &amp;, ReceiverT);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.empty_deleter_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/empty_deleter.hpp" target="_top">boost/log/utility/empty_deleter.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>22.04.2007</p>
+<p>
+This header contains an <code class="computeroutput">empty_deleter</code> implementation. This is an empty function object that receives a pointer and does nothing with it. Such empty deletion strategy may be convenient, for example, when constructing <code class="computeroutput">shared_ptr</code>s that point to some object that should not be deleted (i.e. a variable on the stack or some global singleton, like <code class="computeroutput">std::cout</code>). </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>struct</strong></span> <a href="boost/log/empty_deleter.html" title="Struct empty_deleter">empty_deleter</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.exception_handler_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/exception_handler.hpp" target="_top">boost/log/utility/exception_handler.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>12.07.2009</p>
+<p>
+This header contains tools for exception handlers support in different parts of the library. </p>
+<pre class="synopsis">
+
+<a href="BOOST_LOG_MAX_EXCEPTION_TYPES.html" title="Macro BOOST_LOG_MAX_EXCEPTION_TYPES">BOOST_LOG_MAX_EXCEPTION_TYPES</a></pre>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> SequenceT, <span class="bold"><strong>typename</strong></span> HandlerT&gt; <span class="bold"><strong>class</strong></span> <a href="boost/log/exception_handler.html" title="Class template exception_handler">exception_handler</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> SequenceT, <span class="bold"><strong>typename</strong></span> HandlerT&gt; 
+      <span class="bold"><strong>class</strong></span> <a href="boost/log/nothrow_exception_handler.html" title="Class template nothrow_exception_handler">nothrow_exception_handler</a>;
+    <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="boost/log/make_exception_suppressor.html" title="Function make_exception_suppressor">make_exception_suppressor</a>();
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> HandlerT&gt; 
+      <span class="type"><a href="boost/log/exception_handler.html" title="Class template exception_handler">exception_handler</a>&lt; <span class="bold"><strong>typename</strong></span> HandlerT::exception_types, HandlerT &gt;</span> 
+      <a href="boost/log/make_exception_handler_id296019.html" title="Function template make_exception_handler">make_exception_handler</a>(HandlerT <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> HandlerT&gt; 
+      <span class="type"><a href="boost/log/nothrow_exception_handler.html" title="Class template nothrow_exception_handler">nothrow_exception_handler</a>&lt; <span class="bold"><strong>typename</strong></span> HandlerT::exception_types, HandlerT &gt;</span> 
+      <a href="boost/log/make_exception_handler_id296067.html" title="Function template make_exception_handler">make_exception_handler</a>(HandlerT <span class="bold"><strong>const</strong></span> &amp;, std::nothrow_t <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span>... ExceptionsT, <span class="bold"><strong>typename</strong></span> HandlerT&gt; 
+      <span class="type"><a href="boost/log/exception_handler.html" title="Class template exception_handler">exception_handler</a>&lt; MPL_sequence_of_ExceptionsT, HandlerT &gt;</span> 
+      <a href="boost/log/make_exception_handler_id296123.html" title="Function template make_exception_handler">make_exception_handler</a>(HandlerT <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span>... ExceptionsT, <span class="bold"><strong>typename</strong></span> HandlerT&gt; 
+      <span class="type"><a href="boost/log/nothrow_exception_handler.html" title="Class template nothrow_exception_handler">nothrow_exception_handler</a>&lt; MPL_sequence_of_ExceptionsT, HandlerT &gt;</span> 
+      <a href="boost/log/make_exception_handler_id296176.html" title="Function template make_exception_handler">make_exception_handler</a>(HandlerT <span class="bold"><strong>const</strong></span> &amp;, std::nothrow_t <span class="bold"><strong>const</strong></span> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.init.common_attributes_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/init/common_attributes.hpp" target="_top">boost/log/utility/init/common_attributes.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>16.05.2008</p>
+<p>
+The header contains implementation of convenience functions for registering commonly used attributes. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/add_common_attributes.html" title="Function template add_common_attributes">add_common_attributes</a>();
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.init.filter_parser_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/init/filter_parser.hpp" target="_top">boost/log/utility/init/filter_parser.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>31.03.2008</p>
+<p>
+The header contains definition of a filter parser function. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; <span class="bold"><strong>struct</strong></span> <a href="boost/log/filter_factory.html" title="Struct template filter_factory">filter_factory</a>;
+
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> AttributeValueT&gt; 
+      <span class="bold"><strong>class</strong></span> <a href="boost/log/basic_filter_factory.html" title="Class template basic_filter_factory">basic_filter_factory</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_filter_factory_id296817.html" title="Function template register_filter_factory">register_filter_factory</a>(<span class="bold"><strong>const</strong></span> CharT *, 
+                                   shared_ptr&lt; <a href="boost/log/filter_factory.html" title="Struct template filter_factory">filter_factory</a>&lt; CharT &gt; &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT, <span class="bold"><strong>typename</strong></span> AllocatorT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_filter_factory_id296869.html" title="Function template register_filter_factory">register_filter_factory</a>(std::basic_string&lt; CharT, TraitsT, AllocatorT &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                                   shared_ptr&lt; <a href="boost/log/filter_factory.html" title="Struct template filter_factory">filter_factory</a>&lt; CharT &gt; &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> AttributeValueT, <span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_simple_filter__id296927.html" title="Function template register_simple_filter_factory">register_simple_filter_factory</a>(<span class="bold"><strong>const</strong></span> CharT *);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> AttributeValueT, <span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT, 
+             <span class="bold"><strong>typename</strong></span> AllocatorT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_simple_filter__id296975.html" title="Function template register_simple_filter_factory">register_simple_filter_factory</a>(std::basic_string&lt; CharT, TraitsT, AllocatorT &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type">basic_core&lt; CharT &gt;::filter_type</span> 
+      <a href="boost/log/parse_filter_id297033.html" title="Function template parse_filter">parse_filter</a>(<span class="bold"><strong>const</strong></span> CharT *, <span class="bold"><strong>const</strong></span> CharT *);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT, <span class="bold"><strong>typename</strong></span> AllocatorT&gt; 
+      <span class="type">basic_core&lt; CharT &gt;::filter_type</span> 
+      <a href="boost/log/parse_filter_id297091.html" title="Function template parse_filter">parse_filter</a>(std::basic_string&lt; CharT, TraitsT, AllocatorT &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type">basic_core&lt; CharT &gt;::filter_type</span> <a href="boost/log/parse_filter_id297143.html" title="Function template parse_filter">parse_filter</a>(<span class="bold"><strong>const</strong></span> CharT *);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.init.formatter_parser_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/init/formatter_parser.hpp" target="_top">boost/log/utility/init/formatter_parser.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>07.04.2008</p>
+<p>
+The header contains definition of a formatter parser function, along with facilities to add support for custom formatters. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; <span class="bold"><strong>struct</strong></span> <a href="boost/log/formatter_types.html" title="Struct template formatter_types">formatter_types</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_formatter_fact_id297316.html" title="Function template register_formatter_factory">register_formatter_factory</a>(<span class="bold"><strong>const</strong></span> CharT *, 
+                                      <span class="bold"><strong>typename</strong></span> <a href="boost/log/formatter_types.html" title="Struct template formatter_types">formatter_types</a>&lt; CharT &gt;::formatter_factory <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT, <span class="bold"><strong>typename</strong></span> AllocatorT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_formatter_fact_id297372.html" title="Function template register_formatter_factory">register_formatter_factory</a>(std::basic_string&lt; CharT, TraitsT, AllocatorT &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                                      <span class="bold"><strong>typename</strong></span> <a href="boost/log/formatter_types.html" title="Struct template formatter_types">formatter_types</a>&lt; CharT &gt;::formatter_factory <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> AttributeValueT, <span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_simple_formatt_id297431.html" title="Function template register_simple_formatter_factory">register_simple_formatter_factory</a>(<span class="bold"><strong>const</strong></span> CharT *);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> AttributeValueT, <span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT, 
+             <span class="bold"><strong>typename</strong></span> AllocatorT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_simple_formatt_id297486.html" title="Function template register_simple_formatter_factory">register_simple_formatter_factory</a>(std::basic_string&lt; CharT, TraitsT, AllocatorT &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><a href="boost/log/formatter_types.html" title="Struct template formatter_types">formatter_types</a>&lt; CharT &gt;::formatter_type</span> 
+      <a href="boost/log/parse_formatter_id297540.html" title="Function template parse_formatter">parse_formatter</a>(<span class="bold"><strong>const</strong></span> CharT *, <span class="bold"><strong>const</strong></span> CharT *);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT, <span class="bold"><strong>typename</strong></span> AllocatorT&gt; 
+      <span class="type"><a href="boost/log/formatter_types.html" title="Struct template formatter_types">formatter_types</a>&lt; CharT &gt;::formatter_type</span> 
+      <a href="boost/log/parse_formatter_id297600.html" title="Function template parse_formatter">parse_formatter</a>(std::basic_string&lt; CharT, TraitsT, AllocatorT &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><a href="boost/log/formatter_types.html" title="Struct template formatter_types">formatter_types</a>&lt; CharT &gt;::formatter_type</span> <a href="boost/log/parse_formatter_id297655.html" title="Function template parse_formatter">parse_formatter</a>(<span class="bold"><strong>const</strong></span> CharT *);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.init.from_settings_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/init/from_settings.hpp" target="_top">boost/log/utility/init/from_settings.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>11.10.2009</p>
+<p>
+The header contains definition of facilities that allows to initialize the library from settings. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; <span class="bold"><strong>class</strong></span> <a href="boost/log/basic_settings.html" title="Class template basic_settings">basic_settings</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/init_from_settings.html" title="Function template init_from_settings">init_from_settings</a>(<a href="boost/log/basic_settings.html" title="Class template basic_settings">basic_settings</a>&lt; CharT &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_sink_factory_id297987.html" title="Function template register_sink_factory">register_sink_factory</a>(<span class="bold"><strong>const</strong></span> CharT *, 
+                                 function1&lt; shared_ptr&lt; sinks::sink&lt; CharT &gt; &gt;, std::map&lt; std::basic_string&lt; CharT &gt;, any &gt; <span class="bold"><strong>const</strong></span> &amp; &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT, <span class="bold"><strong>typename</strong></span> AllocatorT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/register_sink_factory_id298031.html" title="Function template register_sink_factory">register_sink_factory</a>(std::basic_string&lt; CharT, TraitsT, AllocatorT &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                                 function1&lt; shared_ptr&lt; sinks::sink&lt; CharT &gt; &gt;, std::map&lt; std::basic_string&lt; CharT &gt;, any &gt; <span class="bold"><strong>const</strong></span> &amp; &gt; <span class="bold"><strong>const</strong></span> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.init.from_stream_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/init/from_stream.hpp" target="_top">boost/log/utility/init/from_stream.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>22.03.2008</p>
+<p>
+The header contains definition of facilities that allows to initialize the library from a settings file. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/init_from_stream.html" title="Function template init_from_stream">init_from_stream</a>(std::basic_istream&lt; CharT &gt; &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.init.to_console_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/init/to_console.hpp" target="_top">boost/log/utility/init/to_console.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>16.05.2008</p>
+<p>
+The header contains implementation of convenience functions for enabling logging to console. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span>... ArgsT&gt; 
+      <span class="type">shared_ptr&lt; sinks::synchronous_sink&lt; sinks::basic_text_ostream_backend&lt; CharT &gt; &gt;&gt;</span> 
+      <a href="boost/log/init_log_to_console_id298162.html" title="Function template init_log_to_console">init_log_to_console</a>(std::basic_ostream&lt; CharT &gt; &amp;, ArgsT...<span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span>... ArgsT&gt; 
+      <span class="type">shared_ptr&lt; sinks::synchronous_sink&lt; sinks::basic_text_ostream_backend&lt; CharT &gt; &gt;&gt;</span> 
+      <a href="boost/log/init_log_to_console_id298252.html" title="Function template init_log_to_console">init_log_to_console</a>(ArgsT...<span class="bold"><strong>const</strong></span> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.init.to_file_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/init/to_file.hpp" target="_top">boost/log/utility/init/to_file.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>16.05.2008</p>
+<p>
+The header contains implementation of convenience functions for enabling logging to a file. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span>... ArgsT&gt; 
+      <span class="type">shared_ptr&lt; sinks::synchronous_sink&lt; sinks::basic_text_file_backend&lt; CharT &gt; &gt;&gt;</span> 
+      <a href="boost/log/init_log_to_file_id298316.html" title="Function template init_log_to_file">init_log_to_file</a>(ArgsT...<span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span>... ArgsT&gt; 
+      <span class="type">shared_ptr&lt; sinks::synchronous_sink&lt; sinks::text_file_backend &gt;&gt;</span> 
+      <a href="boost/log/init_log_to_file_id298484.html" title="Function template init_log_to_file">init_log_to_file</a>(ArgsT...<span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span>... ArgsT&gt; 
+      <span class="type">shared_ptr&lt; sinks::synchronous_sink&lt; sinks::wtext_file_backend &gt;&gt;</span> 
+      <a href="boost/log/winit_log_to_file.html" title="Function template winit_log_to_file">winit_log_to_file</a>(ArgsT...<span class="bold"><strong>const</strong></span> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.intrusive_ref_counter_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/intrusive_ref_counter.hpp" target="_top">boost/log/utility/intrusive_ref_counter.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>12.03.2009</p>
+<p>
+This header contains a reference counter class for <code class="computeroutput">intrusive_ptr</code>. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>class</strong></span> <a href="boost/log/intrusive_ref_counter.html" title="Class intrusive_ref_counter">intrusive_ref_counter</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.no_unused_warnings_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/no_unused_warnings.hpp" target="_top">boost/log/utility/no_unused_warnings.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>10.05.2008</p>
+<p>
+The header contains definition of a macro to suppress compiler warnings about unused variables. </p>
+<pre class="synopsis">
+
+<a href="BOOST_LOG_NO_UNUSED_WARNINGS.html" title="Macro BOOST_LOG_NO_UNUSED_WARNINGS">BOOST_LOG_NO_UNUSED_WARNINGS</a>(var)</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.record_ordering_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/record_ordering.hpp" target="_top">boost/log/utility/record_ordering.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>23.08.2009</p>
+<p>
+This header contains ordering predicates for logging records. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> FunT = aux::less&gt; <span class="bold"><strong>class</strong></span> <a href="boost/log/handle_ordering.html" title="Class template handle_ordering">handle_ordering</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> ValueT, <span class="bold"><strong>typename</strong></span> FunT = aux::less&gt; 
+      <span class="bold"><strong>class</strong></span> <a href="boost/log/attribute_value_ordering.html" title="Class template attribute_value_ordering">attribute_value_ordering</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ValueT, <span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> FunT&gt; 
+      <span class="type"><a href="boost/log/attribute_value_ordering.html" title="Class template attribute_value_ordering">attribute_value_ordering</a>&lt; CharT, ValueT, FunT &gt;</span> 
+      <a href="boost/log/make_attr_ordering_id298942.html" title="Function template make_attr_ordering">make_attr_ordering</a>(<span class="bold"><strong>const</strong></span> CharT *, FunT <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> ValueT, <span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> FunT&gt; 
+      <span class="type"><a href="boost/log/attribute_value_ordering.html" title="Class template attribute_value_ordering">attribute_value_ordering</a>&lt; CharT, ValueT, FunT &gt;</span> 
+      <a href="boost/log/make_attr_ordering_id298982.html" title="Function template make_attr_ordering">make_attr_ordering</a>(std::basic_string&lt; CharT &gt; <span class="bold"><strong>const</strong></span> &amp;, FunT <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> FunT&gt; 
+      <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="boost/log/make_attr_ordering_id299022.html" title="Function template make_attr_ordering">make_attr_ordering</a>(<span class="bold"><strong>const</strong></span> CharT *, FunT <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> FunT&gt; 
+      <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="boost/log/make_attr_ordering_id299056.html" title="Function template make_attr_ordering">make_attr_ordering</a>(std::basic_string&lt; CharT &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                                     FunT <span class="bold"><strong>const</strong></span> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.scoped_attribute_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/scoped_attribute.hpp" target="_top">boost/log/utility/scoped_attribute.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>13.05.2007</p>
+<p>
+The header contains definition of facilities to define scoped attributes. </p>
+<pre class="synopsis">
+
+<a href="BOOST_LOG_SCOPED_LOGGER_ATTR_CTOR.html" title="Macro BOOST_LOG_SCOPED_LOGGER_ATTR_CTOR">BOOST_LOG_SCOPED_LOGGER_ATTR_CTOR</a>(logger, attr_name, attr_type, attr_ctor_args)
+<a href="BOOST_LOG_SCOPED_LOGGER_ATTR.html" title="Macro BOOST_LOG_SCOPED_LOGGER_ATTR">BOOST_LOG_SCOPED_LOGGER_ATTR</a>(logger, attr_name, attr_type)
+<a href="BOOST_LOG_SCOPED_LOGGER_TAG.html" title="Macro BOOST_LOG_SCOPED_LOGGER_TAG">BOOST_LOG_SCOPED_LOGGER_TAG</a>(logger, attr_name, attr_type, attr_value)
+<a href="BOOST_LOG_SCOPED_THREAD_ATTR_CTOR.html" title="Macro BOOST_LOG_SCOPED_THREAD_ATTR_CTOR">BOOST_LOG_SCOPED_THREAD_ATTR_CTOR</a>(attr_name, attr_type, attr_ctor_args)
+<a href="BOOST_LOG_SCOPED_THREAD_ATTR.html" title="Macro BOOST_LOG_SCOPED_THREAD_ATTR">BOOST_LOG_SCOPED_THREAD_ATTR</a>(attr_name, attr_type)
+<a href="BOOST_LOG_SCOPED_THREAD_TAG.html" title="Macro BOOST_LOG_SCOPED_THREAD_TAG">BOOST_LOG_SCOPED_THREAD_TAG</a>(attr_name, attr_type, attr_value)</pre>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>typedef</strong></span> <span class="emphasis"><em>unspecified</em></span> <a name="boost.log.scoped_attribute"></a>scoped_attribute;  <span class="emphasis"><em>// Scoped attribute guard type. </em></span>
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> LoggerT&gt; 
+      <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="boost/log/add_scoped_logger_attri_id299118.html" title="Function template add_scoped_logger_attribute">add_scoped_logger_attribute</a>(LoggerT &amp;, 
+                                              <span class="bold"><strong>typename</strong></span> LoggerT::string_type <span class="bold"><strong>const</strong></span> &amp;, 
+                                              shared_ptr&lt; attribute &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+      <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="boost/log/add_scoped_thread_attri_id299174.html" title="Function template add_scoped_thread_attribute">add_scoped_thread_attribute</a>(std::basic_string&lt; CharT &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                                              shared_ptr&lt; attribute &gt; <span class="bold"><strong>const</strong></span> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.slim_string_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/slim_string.hpp" target="_top">boost/log/utility/slim_string.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>08.09.2007</p>
+<p>
+The header contains implementation of a lightweight read-only STL-string analogue. Slim strings are used to contain attribute names. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT = std::char_traits&lt; CharT &gt; &gt; 
+      <span class="bold"><strong>class</strong></span> <a href="boost/log/basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT&gt; 
+      <span class="type">std::basic_ostream&lt; CharT, TraitsT &gt; &amp;</span> 
+      <a href="boost/log/operator_id302273.html" title="Function template operator&lt;&lt;"><span class="bold"><strong>operator</strong></span>&lt;&lt;</a>(std::basic_ostream&lt; CharT, TraitsT &gt; &amp;, 
+                 <a href="boost/log/basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a>&lt; CharT, TraitsT &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/swap_id302307.html" title="Function template swap">swap</a>(<a href="boost/log/basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a>&lt; CharT, TraitsT &gt; &amp;, 
+                <a href="boost/log/basic_slim_string.html" title="Class template basic_slim_string">basic_slim_string</a>&lt; CharT, TraitsT &gt; &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.string_literal_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/string_literal.hpp" target="_top">boost/log/utility/string_literal.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>24.06.2007</p>
+<p>
+The header contains implementation of a constant string literal wrapper. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT = std::char_traits&lt; CharT &gt; &gt; 
+      <span class="bold"><strong>class</strong></span> <a href="boost/log/basic_string_literal.html" title="Class template basic_string_literal">basic_string_literal</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> StrmTraitsT, <span class="bold"><strong>typename</strong></span> LitTraitsT&gt; 
+      <span class="type">std::basic_ostream&lt; CharT, StrmTraitsT &gt; &amp;</span> 
+      <a href="boost/log/operator_id303636.html" title="Function template operator&lt;&lt;"><span class="bold"><strong>operator</strong></span>&lt;&lt;</a>(std::basic_ostream&lt; CharT, StrmTraitsT &gt; &amp;, 
+                 <a href="boost/log/basic_string_literal.html" title="Class template basic_string_literal">basic_string_literal</a>&lt; CharT, LitTraitsT &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT, <span class="bold"><strong>typename</strong></span> TraitsT&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/swap_id303675.html" title="Function template swap">swap</a>(<a href="boost/log/basic_string_literal.html" title="Class template basic_string_literal">basic_string_literal</a>&lt; CharT, TraitsT &gt; &amp;, 
+                <a href="boost/log/basic_string_literal.html" title="Class template basic_string_literal">basic_string_literal</a>&lt; CharT, TraitsT &gt; &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.type_dispatch.date_time_types_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/type_dispatch/date_time_types.hpp" target="_top">boost/log/utility/type_dispatch/date_time_types.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>13.03.2008</p>
+<p>
+The header contains definition of date and time-related types supported by the library by default. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>typedef</strong></span> mpl::vector&lt; std::time_t, std::tm &gt;::type <a href="boost/log/native_date_time_types.html" title="Type definition native_date_time_types">native_date_time_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::vector&lt; posix_time::ptime, local_time::local_date_time &gt;::type <a href="boost/log/boost_date_time_types.html" title="Type definition boost_date_time_types">boost_date_time_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::joint_view&lt; native_date_time_types, boost_date_time_types &gt;::type <a href="boost/log/date_time_types.html" title="Type definition date_time_types">date_time_types</a>;
+    <span class="bold"><strong>typedef</strong></span> native_date_time_types <a href="boost/log/native_date_types.html" title="Type definition native_date_types">native_date_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::push_back&lt; boost_date_time_types, gregorian::date &gt;::type <a href="boost/log/boost_date_types.html" title="Type definition boost_date_types">boost_date_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::joint_view&lt; native_date_types, boost_date_types &gt;::type <a href="boost/log/date_types.html" title="Type definition date_types">date_types</a>;
+    <span class="bold"><strong>typedef</strong></span> native_date_time_types <a href="boost/log/native_time_types.html" title="Type definition native_time_types">native_time_types</a>;
+    <span class="bold"><strong>typedef</strong></span> boost_date_time_types <a name="boost.log.boost_time_types"></a>boost_time_types;  <span class="emphasis"><em>// An MPL-sequence of Boost time types. </em></span>
+    <span class="bold"><strong>typedef</strong></span> date_time_types <a href="boost/log/time_types.html" title="Type definition time_types">time_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::vector&lt; double &gt;::type <a href="boost/log/native_time_duration_types.html" title="Type definition native_time_duration_types">native_time_duration_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::vector&lt; posix_time::time_duration, gregorian::date_duration &gt;::type <a href="boost/log/boost_time_duration_types.html" title="Type definition boost_time_duration_types">boost_time_duration_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::joint_view&lt; native_time_duration_types, boost_time_duration_types &gt;::type <a href="boost/log/time_duration_types.html" title="Type definition time_duration_types">time_duration_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::vector&lt; posix_time::time_period, local_time::local_time_period, gregorian::date_period &gt;::type <a href="boost/log/boost_time_period_types.html" title="Type definition boost_time_period_types">boost_time_period_types</a>;
+    <span class="bold"><strong>typedef</strong></span> boost_time_period_types <a href="boost/log/time_period_types.html" title="Type definition time_period_types">time_period_types</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.type_dispatch.dynamic_type_dispatcher_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/type_dispatch/dynamic_type_dispatcher.hpp" target="_top">boost/log/utility/type_dispatch/dynamic_type_dispatcher.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>15.04.2007</p>
+<p>
+The header contains implementation of the run-time type dispatcher. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>class</strong></span> <a href="boost/log/dynamic_type_dispatcher.html" title="Class dynamic_type_dispatcher">dynamic_type_dispatcher</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.type_dispatch.standard_types_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/type_dispatch/standard_types.hpp" target="_top">boost/log/utility/type_dispatch/standard_types.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>19.05.2007</p>
+<p>
+The header contains definition of standard types supported by the library by default. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; <span class="bold"><strong>struct</strong></span> <a href="boost/log/basic_string_types.html" title="Struct template basic_string_types">basic_string_types</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; <span class="bold"><strong>struct</strong></span> <a href="boost/log/make_default_attribute__id303995.html" title="Struct template make_default_attribute_types">make_default_attribute_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::vector&lt; <span class="bold"><strong>bool</strong></span>, <span class="bold"><strong>char</strong></span>, <span class="bold"><strong>wchar_t</strong></span>, <span class="bold"><strong>signed</strong></span> <span class="bold"><strong>char</strong></span>, <span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>char</strong></span>, <span class="bold"><strong>short</strong></span>, <span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>short</strong></span>, <span class="bold"><strong>int</strong></span>, <span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>int</strong></span>, <span class="bold"><strong>long</strong></span>, <span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>long</strong></span> &gt;::type <a href="boost/log/integral_types.html" title="Type definition integral_types">integral_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::vector&lt; <span class="bold"><strong>float</strong></span>, double, <span class="bold"><strong>long</strong></span> double &gt;::type <a href="boost/log/floating_point_types.html" title="Type definition floating_point_types">floating_point_types</a>;
+    <span class="bold"><strong>typedef</strong></span> mpl::joint_view&lt; integral_types, floating_point_types &gt;::type <a href="boost/log/numeric_types.html" title="Type definition numeric_types">numeric_types</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.type_dispatch.static_type_dispatcher_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/type_dispatch/static_type_dispatcher.hpp" target="_top">boost/log/utility/type_dispatch/static_type_dispatcher.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>15.04.2007</p>
+<p>
+The header contains implementation of a compile-time type dispatcher. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> TypeSequenceT, 
+             <span class="bold"><strong>typename</strong></span> VisitorGenT = mpl::quote1&lt; type_visitor &gt;, 
+             <span class="bold"><strong>typename</strong></span> RootT = type_dispatcher&gt; 
+      <span class="bold"><strong>class</strong></span> <a href="boost/log/static_type_dispatcher.html" title="Class template static_type_dispatcher">static_type_dispatcher</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.type_dispatch.type_dispatcher_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/type_dispatch/type_dispatcher.hpp" target="_top">boost/log/utility/type_dispatch/type_dispatcher.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>15.04.2007</p>
+<p>
+The header contains definition of generic type dispatcher interfaces. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> T&gt; <span class="bold"><strong>struct</strong></span> <a href="boost/log/type_visitor.html" title="Struct template type_visitor">type_visitor</a>;
+    <span class="bold"><strong>struct</strong></span> <a href="boost/log/type_dispatcher.html" title="Struct type_dispatcher">type_dispatcher</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.type_info_wrapper_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/type_info_wrapper.hpp" target="_top">boost/log/utility/type_info_wrapper.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>15.04.2007</p>
+<p>
+The header contains implementation of a type information wrapper. </p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> log {
+    <span class="bold"><strong>class</strong></span> <a href="boost/log/type_info_wrapper.html" title="Class type_info_wrapper">type_info_wrapper</a>;
+    <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="boost/log/swap_id304582.html" title="Function swap">swap</a>(<a href="boost/log/type_info_wrapper.html" title="Class type_info_wrapper">type_info_wrapper</a> &amp;, <a href="boost/log/type_info_wrapper.html" title="Class type_info_wrapper">type_info_wrapper</a> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="header.boost.log.utility.unique_identifier_name_hpp"></a>Header &lt;<a href="../../../../boost/log/utility/unique_identifier_name.hpp" target="_top">boost/log/utility/unique_identifier_name.hpp</a>&gt;</h4></div></div></div>
+<p>Andrey Semashev </p>
+<p>
+</p>
+<p>30.04.2008</p>
+<p>
+The header contains BOOST_LOG_UNIQUE_IDENTIFIER_NAME macro definition. </p>
+<pre class="synopsis">
+
+<a href="BOOST_LOG_UNIQUE_IDENTIFIER_NAME.html" title="Macro BOOST_LOG_UNIQUE_IDENTIFIER_NAME">BOOST_LOG_UNIQUE_IDENTIFIER_NAME</a>(prefix)</pre>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="boost/log/sinks/unlocked_sink.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="log/reference.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="boost/log/attribute_value_extractor.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

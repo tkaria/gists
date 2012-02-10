@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class template flt_has_attr&lt;CharT, void&gt;</title>
+<link rel="stylesheet" href="../../../../../../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="../../../index.html" title="Chapter&#160;1.&#160;Boost.Log">
+<link rel="up" href="../../../filters.html#header.boost.log.filters.has_attr_hpp" title="Header &lt;boost/log/filters/has_attr.hpp&gt;">
+<link rel="prev" href="flt_has_attr.html" title="Class template flt_has_attr">
+<link rel="next" href="../../../formatters.html" title="Formatters">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../../../boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="flt_has_attr.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../filters.html#header.boost.log.filters.has_attr_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../../../formatters.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.log.filters.flt_has_attr_CharT,_voi_id269821"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class template flt_has_attr&lt;CharT, void&gt;</span></h2>
+<p>boost::log::filters::flt_has_attr&lt;CharT, void&gt; &#8212; A filter that detects if there is an attribute with given name in the complete attribute view. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="emphasis"><em>// In header: &lt;<a href="../../../filters.html#header.boost.log.filters.has_attr_hpp" title="Header &lt;boost/log/filters/has_attr.hpp&gt;">boost/log/filters/has_attr.hpp</a>&gt;
+
+</em></span><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> CharT&gt; 
+<span class="bold"><strong>class</strong></span> <a href="flt_has_attr_CharT__voi_id269821.html" title="Class template flt_has_attr&lt;CharT, void&gt;">flt_has_attr</a>&lt;CharT, <span class="bold"><strong>void</strong></span>&gt; :
+  <span class="bold"><strong>public</strong></span> basic_filter&lt; CharT, flt_has_attr&lt; CharT, <span class="bold"><strong>void</strong></span> &gt; &gt;
+{
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::values_view_type <a name="boost.log.filters.flt_has_attr_CharT,_voi_id269821.values_view_type"></a>values_view_type;  <span class="emphasis"><em>// Attribute values container type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::char_type        <a name="boost.log.filters.flt_has_attr_CharT,_voi_id269821.char_type"></a>char_type;         <span class="emphasis"><em>// Char type. </em></span>
+  <span class="bold"><strong>typedef</strong></span> base_type::string_type      <a name="boost.log.filters.flt_has_attr_CharT,_voi_id269821.string_type"></a>string_type;       <span class="emphasis"><em>// String type. </em></span>
+
+  <span class="emphasis"><em>// <a href="flt_has_attr_CharT__voi_id269821.html#id269873-bb">public member functions</a></em></span>
+  <span class="type"></span> <a href="flt_has_attr_CharT__voi_id269821.html#id269876-bb">flt_has_attr</a>(string_type <span class="bold"><strong>const</strong></span> &amp;) ;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="flt_has_attr_CharT__voi_id269821.html#id269898-bb"><span class="bold"><strong>operator</strong></span>()</a>(values_view_type <span class="bold"><strong>const</strong></span> &amp;) <span class="bold"><strong>const</strong></span>;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id465308"></a><h2>Description</h2>
+<p>The specialization is used when an attribute value of any type is sought. </p>
+<div class="refsect2" lang="en">
+<a name="id465314"></a><h3>
+<a name="id269873-bb"></a><code class="computeroutput">flt_has_attr</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type"></span> <a name="id269876-bb"></a>flt_has_attr(string_type <span class="bold"><strong>const</strong></span> &amp; name) ;</pre>
+<p>Constructs the filter</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">name</code></span></td>
+<td><p>Attribute name </p></td>
+</tr></tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id269898-bb"></a><span class="bold"><strong>operator</strong></span>()(values_view_type <span class="bold"><strong>const</strong></span> &amp; values) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Applies the filter</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><code class="computeroutput">values</code></span></td>
+<td><p>A set of attribute values of a single log record </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><span class="term">Returns:</span></td>
+<td><p>true if the log record contains the sought attribute value, false otherwise </p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 , 2008, 2009, 2010 Andrey Semashev<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>).
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="flt_has_attr.html"><img src="../../../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../filters.html#header.boost.log.filters.has_attr_hpp"><img src="../../../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../../../formatters.html"><img src="../../../../../../../doc/html/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>
