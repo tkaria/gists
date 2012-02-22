@@ -1,0 +1,17 @@
+K 10
+svn:ignore
+V 117
+CMakeFiles
+Debug
+Release
+x64
+BUILD
+LICENSE
+OWNERS
+README.google
+SMHasher
+Makefile
+CMakeCache.txt
+cmake_install.cmake
+
+END
