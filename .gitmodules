@@ -1,3 +1,6 @@
 [submodule "zeromq1"]
 	path = zeromq1
 	url = https://github.com/zeromq/zeromq1.git
+[submodule "disruptor--"]
+	path = disruptor--
+	url = https://github.com/fsaintjacques/disruptor--.git

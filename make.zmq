@@ -65,6 +65,11 @@ zmqcli3: zmqcli3.o
 zmqcli3.o: zmqcli3.cpp
 	g++ $(CFLAGS) zmqcli3.cpp -c 
 
+zmq_pairtest.o: zmq_pairtest.cpp
+	g++ $(CFLAGS) zmq_pairtest.cpp -c
+
+zmq_pairtest: zmq_pairtest.o
+	g++ -o zmq_pairtest zmq_pairtest.o -L$(ZMQ_ROOT)/lib -l zmq -lboost_thread
 
 # Next to Godliness
 clean:
