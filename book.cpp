@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 	}
 
 	std::string symbol("EUR/USD");
-	capitalk::PriceDepthOrderBook b(symbol, 10);
+	capitalk::PriceDepthOrderBook orderBook(symbol, 10);
 	if (argc > 1) {
 		std::string f(argv[1]);
 		in.open(f.c_str());
