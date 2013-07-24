@@ -1,0 +1,2 @@
+0 3 * * * source ~/.bash_profile && /home/timir/move_daily_tick_data.sh FXCM
+
