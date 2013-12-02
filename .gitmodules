@@ -10,3 +10,6 @@
 [submodule "bootstrap"]
 	path = bootstrap
 	url = git@github.com:twitter/bootstrap.git
+[submodule "liquibook"]
+	path = liquibook
+	url = git@github.com:objectcomputing/liquibook.git

@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 #include <time.h>
-#define NUM_REQUESTS 11000000
+#define NUM_REQUESTS 100000
 
 int main ()
 {
