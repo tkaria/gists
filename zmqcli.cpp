@@ -42,9 +42,7 @@ int main ()
     return 0;
 }
 
-int do_something()
-{
-  // This is a function that does something
+int do_something() {
+  // this is a function that does something
+  // is it interesting or not
 }
-
-
