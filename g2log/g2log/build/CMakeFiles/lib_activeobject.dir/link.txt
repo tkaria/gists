@@ -1,2 +1,0 @@
-/usr/bin/ar cr liblib_activeobject.a  CMakeFiles/lib_activeobject.dir/src/active.cpp.o
-/usr/bin/ranlib liblib_activeobject.a

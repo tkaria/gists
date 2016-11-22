@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -rdynamic -Wunused -std=c++0x -g -pthread -I/usr/include/justthread  -fPIC CMakeFiles/g2log-example.dir/test_example/main.cpp.o  -o g2log-example -rdynamic liblib_activeobject.a liblib_g2logger.a -ljustthread -lrt liblib_activeobject.a 

@@ -1,7 +1,0 @@
-Integration test for CloudBioLinux.
-
-Try:
-
-./test_vagrant --help
-
-
