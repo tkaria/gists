@@ -2,4 +2,5 @@
 *.a
 *.so
 a.out
+node_modules
 

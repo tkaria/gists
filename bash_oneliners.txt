@@ -1,0 +1,11 @@
+# For a given range of ids make some call to ElasticSearch
+ for ((i=31050133;i<31051533;i++));
+ do
+     addr=http://192.168.0.220:9200/entities/entity/entity_$i
+     echo $addr
+     curl -X DELETE  http://192.168.0.220:9200/entities/entity/entity_$i | jq
+ done
+
+ # Count the unique number of things in a CSV
+ cat dealroom.csv | awk -F',' '{print $1}' | sort | uniq | wc -l  
+

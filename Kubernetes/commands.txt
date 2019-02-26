@@ -1,0 +1,70 @@
+ brew install kubectl
+ brew install docker-machine-driver-xhyve
+ minikube start --vm-driver=xhyve
+ minikube version
+ 8766  minikube delete
+ 8767  minikube --vm-driver=hyperkit start 
+ 8773  minikube delete
+ 8774  minikube --vm-driver=hyperkit start 
+ 8775  curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-hyperkit \\n&& chmod +x docker-machine-driver-hyperkit \\n&& sudo mv docker-machine-driver-hyperkit /usr/local/bin/ \\n&& sudo chown root:wheel /usr/local/bin/docker-machine-driver-hyperkit \\n&& sudo chmod u+s /usr/local/bin/docker-machine-driver-hyperkit
+ 8778  curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-hyperkit \\n&& chmod +x docker-machine-driver-hyperkit \\n&& sudo mv docker-machine-driver-hyperkit /usr/local/bin/ \\n&& sudo chown root:wheel /usr/local/bin/docker-machine-driver-hyperkit \\n&& sudo chmod u+s /usr/local/bin/docker-machine-driver-hyperkit
+ 8779  minikube start --vm-driver=hyperkit 
+ 8781  minikube --vm-driver=xhyve start 
+ 8784  minikube --vm-driver=xhyve start 
+ 8785  minikube delete
+ 8786  minikube --vm-driver=xhyve start 
+ 8787  kubectl
+ 8788  kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.4 --port=8080
+ 8789  minikube start 
+ 8790  kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.4 --port=8080
+ 8791  minikube delete
+ 8792  sudo minikube delete
+ 8793  minikube start 
+ 8794  minikube --vm-driver=xhyve start 
+ 8795  minikube delete 
+ 8800  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64 && \\n  chmod +x minikube && \\n  sudo mv minikube /usr/local/bin/
+ 8809  minikube start --vm-driver=xhyve
+ 8810  rm -rf ~/.minikube
+ 8811  sudo rm -rf ~/.minikube
+ 8812  minikube start --vm-driver=xhyve
+ 8813  vi ~/.kube/config
+ 8814  kubectl cluster-info
+ 8815  kubectl cluster-info dump
+ 8816  minikube dashboard
+ 8849  minikube dashboard
+ 9319  kubectl cluster-info
+ 9326  eval $(minikube docker-env)
+ 9329  kubectl run hello-node --image=hello-node:v1 --port=8080\n
+ 9330  kubectl get deployments
+ 9331  kubectl get pods
+ 9332  kubectl get events
+ 9333  kubectl config view\n
+ 9334  kubectl expose deployment hello-node --type=LoadBalancer\n
+ 9335  kubectl get server.js
+ 9336  kubectl get services
+ 9337  minikube service hello-node\n
+ 9338  kubectl get pods
+ 9339  kubectl logs hello-node-658d8f6754-5h55w
+ 9348  kubectl list 
+ 9349  kubectl get 
+ 9350  kubectl get pods
+ 9351  kubectl get jobs
+ 9352  kubectl get services
+ 9565  kubectl get services
+ 9567  kubectl get services
+ 9570  kubectl get pods
+ 9571  kubectl get services
+ 9572  kubectl get ips
+ 9575  minikube service hello-node
+ 9576  kubectl get services
+ 9577  kubectl get services hello-node
+ 9578  kubectl expose deployment hello-node --type=LoadBalancer --name=hello-node
+ 9579  kubectl get services hello-node
+ 9580  kubectl describe  services hello-node
+ 9581  minikube service hello-node
+ 9582  minikube service list 
+ 9583  minikube service hello-node
+ 9924  eval $(minikube docker-env)
+10095  kubectl ls 
+10096  kubectl logs
+10145  history | grep kube
